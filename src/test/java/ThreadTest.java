@@ -1,9 +1,6 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.martinmeer.BasicPitchDiam;
-import org.martinmeer.Deviation;
-import org.martinmeer.MeasuringValues;
-import org.martinmeer.ThreadMeasuringGen;
+import org.martinmeer.*;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -31,8 +28,8 @@ public class ThreadTest {
 
     @Test
     public void deviationTest() {
-        double d2 = d2.generate();
-        Deviation e = new Deviation(d2);
+        double nominalPitchDiam = d2.generate();
+        Deviation e = new Deviation(nominalPitchDiam);
         double[] expected = {-0.071, -0.241};
         double[] actual = e.generate();
         assertArrayEquals(expected, actual);
@@ -40,8 +37,8 @@ public class ThreadTest {
 
     @Test
     public void measuringValuesTest() {
-        double d2 = d2.generate();
-        MeasuringValues mv = new MeasuringValues(d2);
+        double nominalPitchDiam = d2.generate();
+        MeasuringValues mv = new MeasuringValues(nominalPitchDiam);
         double[] expected = {31.630, 31.460};
         double[] actual = mv.generate();
         assertArrayEquals(expected, actual);
@@ -51,7 +48,7 @@ public class ThreadTest {
     public void threadGenTestGenerate() throws IOException {
         Path fixture = Path.of("treadGenStringOutput");
         ThreadMeasuringGen tmg = new ThreadMeasuringGen("M33x2-6e");
-        Map<String, Double> threadMeasuringValues = tmg.generateOutput();
+        Map<String, Double> threadMeasuringValues = tmg.generateMapOfMeasuringVal();
         OutputGen outputGen = new OutputGen(threadMeasuringValues);
         String expected = Files.readString(fixture);
         String actual = outputGen.print();
