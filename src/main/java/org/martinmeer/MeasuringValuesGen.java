@@ -1,7 +1,7 @@
 package org.martinmeer;
 
-public class MeasuringValues {
-    public MeasuringValues(double d2) {
+public class MeasuringValuesGen {
+    public MeasuringValuesGen(double d2) {
     }
 
     public double[] generate() {

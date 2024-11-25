@@ -16,12 +16,12 @@ public class ThreadTest {
 
     @BeforeAll
     public static void setUp() {
-        d2 = new BasicPitchDiam(33);
+        d2 = new BasicPitchDiam(33, 2);
     }
 
     @Test
     public void basicPitchDiamTest() {
-        double expected = 36.630;
+        double expected = 31.701;
         double actual = d2.generate();
         assertEquals(expected, actual);
     }
@@ -38,7 +38,7 @@ public class ThreadTest {
     @Test
     public void measuringValuesTest() {
         double nominalPitchDiam = d2.generate();
-        MeasuringValues mv = new MeasuringValues(nominalPitchDiam);
+        MeasuringValuesGen mv = new MeasuringValuesGen(nominalPitchDiam);
         double[] expected = {31.630, 31.460};
         double[] actual = mv.generate();
         assertArrayEquals(expected, actual);
