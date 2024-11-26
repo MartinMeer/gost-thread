@@ -1,8 +1,10 @@
 package org.martinmeer.AuxClasses;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Tolerances implements DataMap<Map<Double, List<Double>>>{
 
@@ -19,9 +21,23 @@ public class Tolerances implements DataMap<Map<Double, List<Double>>>{
 
 
     @Override
-    public Map<Double, List<Double>> getDataMap() throws IOException {
+    public Map<Double, ArrayList<Double>> getDataMap() throws IOException {
         getPitches();
-        Map<Double, List<Double>> tolerancesMap = new HashMap<>();
+        Map<Double, ArrayList<Double>> tolerancesMap = pitches.stream()
+                .collect(Collectors.toMap(k -> k, v -> {
+                    int givenPitch = k;
+                    v = new ArrayList<>();
+                    for (int i = 0; i < 3; i++) {
+                        try {
+                            toleranceValues(i);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        v.;
+                    }
+
+
+                });
         return tolerancesMap;
     }
 
