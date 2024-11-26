@@ -1,0 +1,28 @@
+import org.junit.jupiter.api.Test;
+import org.martinmeer.AuxClasses.Tolerances;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class TestAuxMethods {
+
+    @Test
+    public void createTolerancesMapTest() throws IOException {
+        Map<Integer, Path> pathMap = new HashMap<>();
+        Map<Double, List<Double>> tolerancesMap;
+        pathMap.put(4, Path.of("tolerance-classes/Tolerance4"));
+        pathMap.put(6, Path.of("tolerance-classes/Tolerance6"));
+        pathMap.put(9, Path.of("tolerance-classes/Tolerance8"));
+        Tolerances tolerances = new Tolerances(pathMap);
+        tolerancesMap = tolerances.getDataMap();
+        assertEquals(25, tolerancesMap.size());
+    }
+
+
+
+}

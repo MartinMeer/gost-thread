@@ -1,10 +1,10 @@
 package org.martinmeer;
 
-public class Deviation {
+public class DeviationsGen {
 
     private final double nominalPitchDiam;
 
-    public Deviation(double nominalPitchDiam) {
+    public DeviationsGen(double nominalPitchDiam) {
         this.nominalPitchDiam = nominalPitchDiam;
     }
 

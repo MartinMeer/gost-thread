@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.*;
+import org.martinmeer.AuxClasses.BasicPitchDiam;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -29,7 +30,7 @@ public class ThreadTest {
     @Test
     public void deviationTest() {
         double nominalPitchDiam = d2.generate();
-        Deviation e = new Deviation(nominalPitchDiam);
+        DeviationsGen e = new DeviationsGen(nominalPitchDiam);
         double[] expected = {-0.071, -0.241};
         double[] actual = e.generate();
         assertArrayEquals(expected, actual);
