@@ -16,9 +16,9 @@ public class TestAuxMethods {
     public void createTolerancesMapTest() throws IOException {
         Map<Integer, Path> pathMap = new HashMap<>();
         Map<Double, ArrayList<Double>> tolerancesMap;
-        pathMap.put(4, Path.of("tolerance-classes/Tolerance4"));
-        pathMap.put(6, Path.of("tolerance-classes/Tolerance6"));
-        pathMap.put(9, Path.of("tolerance-classes/Tolerance8"));
+        pathMap.put(4, Path.of("resources/nom-diam-tolerance-classes/Tolerance4"));
+        pathMap.put(6, Path.of("resources/nom-diam-tolerance-classes/Tolerance6"));
+        pathMap.put(9, Path.of("resources/nom-diam-tolerance-classes/Tolerance8"));
         Tolerances tolerances = new Tolerances(pathMap);
         tolerancesMap = tolerances.getDataMap();
         assertEquals(25, tolerancesMap.size());
