@@ -17,7 +17,7 @@ public class ThreadTest {
 
     @BeforeAll
     public static void setUp() {
-        d2 = new BasicPitchDiam(33, 2);
+        d2 = new BasicPitchDiam(8, 1.2);
     }
 
     @Test
