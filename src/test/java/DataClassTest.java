@@ -24,6 +24,9 @@ public class DataClassTest {
         assertEquals(size, pitches.getPitches().size());
     }
 
+    @Test
+
+
 
 
 
