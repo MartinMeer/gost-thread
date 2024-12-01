@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.*;
-import org.martinmeer.AuxClasses.BasicPitchDiam;
+import org.martinmeer.DataClasses.BasicPitchDiam;
 
 import java.io.*;
 import java.nio.file.Files;

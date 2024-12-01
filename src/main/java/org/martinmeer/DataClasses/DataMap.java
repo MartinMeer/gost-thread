@@ -1,4 +1,4 @@
-package org.martinmeer.AuxClasses;
+package org.martinmeer.DataClasses;
 
 import java.io.IOException;
 import java.util.Map;
