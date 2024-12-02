@@ -1,4 +1,4 @@
-package org.martinmeer.DataClasses;
+package org.martinmeer;
 
 import java.io.IOException;
 import java.util.Map;

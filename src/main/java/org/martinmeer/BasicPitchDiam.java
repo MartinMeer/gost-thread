@@ -1,4 +1,4 @@
-package org.martinmeer.DataClasses;
+package org.martinmeer;
 
 public class BasicPitchDiam {
 
