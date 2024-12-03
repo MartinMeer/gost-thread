@@ -13,13 +13,14 @@ public class InMemoryDB {
     private Deviations deviations;
     private NdTolerances ndTolerances;
     private D2Tolerances d2Tolerances;
+    private DBNames dbNames;
 
 
 
 
-    public void initialize(Path pathToDB) {
+    public void initialize(PathToDB pathToDB) {
         Map<String, Path> pathMap = new PathMap().getPathMap();
-        pitches.setPitchesList(DbParser.parseTxt(pathMap.get("Pitches")));
+        pitches.setPitchesList(DbParser.parseTxt(pathMap.get(PathToDB.PITCHES)));
         d2Tolerances =
         deviations =
     }

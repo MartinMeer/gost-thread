@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.martinmeer.db.DBNames;
 import org.martinmeer.db.InMemoryDB;
 
 import java.io.IOException;
@@ -9,13 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InitTest {
 
-    public static Path pathToPath;
-
-    @BeforeAll
-    public static void setUp() {
-        pathToPath = Path.of("C:\\Users\\user\\IdeaProjects\\gost-thread\\src\\main\\resources\\Path");
-    }
-
+    public static DBNames dbNames;
 
     @Test
     public void testInitialize() throws IOException {

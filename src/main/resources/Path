@@ -1,4 +1,4 @@
-Pitches
-Deviations.yml
-nd-tolerances.yml
-d2-tolerances/d2-tolerance-1.4-2.8.yml
+resources/Pitches
+resources/Deviations.yml
+resources/nd-tolerances.yml
+resources/d2-tolerances/d2-tolerance-1.4-2.8.yml
