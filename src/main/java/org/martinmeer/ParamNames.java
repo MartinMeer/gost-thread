@@ -1,6 +1,6 @@
-package org.martinmeer.db;
+package org.martinmeer;
 
-public enum DBNames {
+public enum ParamNames {
     PITCHES,
     DEVIATIONS,
     NDTOLERANCES,

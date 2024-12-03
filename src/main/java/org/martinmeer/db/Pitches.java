@@ -10,5 +10,7 @@ public class Pitches {
 
     private List<Double> pitchesList;
 
-
+    public Pitches(List<Double> pitchesList) {
+        this.pitchesList = pitchesList;
+    }
 }
