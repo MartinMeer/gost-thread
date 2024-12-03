@@ -19,7 +19,7 @@ public class PathMap {
 
     public Map<ParamNames, Path> pathMapPDND() {
         Map<ParamNames, String> pathMap = new HashMap<>();
-        pathMap.put(ParamNames.PITCHES, "resources/Pitches");
+        pathMap.put(ParamNames.PITCHES, "src/main/resources/Pitches");
         pathMap.put(ParamNames.DEVIATIONS, "resources/Deviations.yml");
         pathMap.put(ParamNames.NDTOLERANCES, "resources/nd-tolerances.yml");
         return mapper(pathMap);
