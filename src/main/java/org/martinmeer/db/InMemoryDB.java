@@ -13,14 +13,12 @@ public class InMemoryDB {
 
     private List<Double> pitchesList;
     private Map<String, List<Double>> deviationsMap;
-    private Map<String, Double> ndTolerancesMap;
-
-
-
+    private Map<Integer, List<Double>> ndTolerancesMap;
 
     public void initialize(PathMap pathMap) {
         pitchesList = DbParser.parseTxt(pathMap.pathMapPDND().get(ParamNames.PITCHES));
         deviationsMap = DbParser.parseYaml(pathMap.pathMapPDND().get(ParamNames.DEVIATIONS));
+        ndTolerancesMap = DbParser.parseYaml(pathMap.pathMapPDND().get(ParamNames.NDTOLERANCES));
     }
 
 

@@ -11,12 +11,6 @@ import java.util.stream.Collectors;
 
 public class PathMap {
 
-    private ParamNames paramNames;
-
-
-    //public PathMap(ParamNames dbNames) {
-    //}
-
     public Map<ParamNames, Path> pathMapPDND() {
         Map<ParamNames, String> pathMap = new HashMap<>();
         pathMap.put(ParamNames.PITCHES, pathGen("Pitches"));

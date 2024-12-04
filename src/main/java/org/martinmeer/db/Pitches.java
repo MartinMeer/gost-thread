@@ -1,16 +1,11 @@
 package org.martinmeer.db;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.*;
 @Getter
-@Setter
+@AllArgsConstructor
 public class Pitches {
-
-    private List<Double> pitchesList;
-
-    public Pitches(List<Double> pitchesList) {
-        this.pitchesList = pitchesList;
-    }
+    private final List<Double> pitchesList;
 }

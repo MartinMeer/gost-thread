@@ -8,9 +8,6 @@ import java.util.*;
 
 public class DbParser {
 
-    public DbParser(Path path) {
-    }
-
     public static List<Double> parseTxt(Path path) {
         try {
             Scanner scanner = new Scanner(path);
@@ -29,13 +26,12 @@ public class DbParser {
         }
     }
 
-    public static Map<String, List<Double>> parseYaml(Path path) {
+    public static <T> Map<T, List<Double>> parseYaml(Path path) {
         File file = path.toFile();
         try {
             Yaml yaml = new Yaml();
             InputStream inputStream = new FileInputStream(file);
-            Map<String, List<Double>> parsed = (Map<String, List<Double>>) yaml.load(inputStream);
-            return parsed;
+            return yaml.load(inputStream);
         } catch (NumberFormatException | IOException e) {
             throw new RuntimeException(e);
         }

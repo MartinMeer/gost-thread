@@ -1,15 +1,13 @@
 package org.martinmeer.db;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.List;
 import java.util.Map;
 
 @Getter
+@AllArgsConstructor
 public class NdTolerances {
-
-    private Map<String, Double> ndTolerancesMap;
-
-    public NdTolerances(Map<String, Double> ndTolerancesMap) {
-
-    }
+    private Map<Integer, List<Double>> ndTolerancesMap;
 }
