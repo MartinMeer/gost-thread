@@ -8,4 +8,8 @@ import java.util.Map;
 public class NdTolerances {
 
     private Map<String, Double> ndTolerancesMap;
+
+    public NdTolerances(Map<String, Double> ndTolerancesMap) {
+
+    }
 }

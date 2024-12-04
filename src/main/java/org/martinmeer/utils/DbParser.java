@@ -1,16 +1,14 @@
 package org.martinmeer.utils;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import org.yaml.snakeyaml.Yaml;
+
+import java.io.*;
 import java.nio.file.Path;
 import java.util.*;
 
 public class DbParser {
 
-    private final Path path;
-
     public DbParser(Path path) {
-        this.path = path;
     }
 
     public static List<Double> parseTxt(Path path) {
@@ -18,11 +16,11 @@ public class DbParser {
             Scanner scanner = new Scanner(path);
             List<Double> dataList = new LinkedList<>();
             String[] data = scanner.nextLine().split(",");
-            for (int i = 0; i < data.length; i++) {
-                if (data[i].equals("null")) {
+            for (String datum : data) {
+                if (datum.equals("null")) {
                     dataList.add(null);
                 }
-                dataList.add(Double.valueOf(data[i]));
+                dataList.add(Double.valueOf(datum));
             }
             scanner.close();
             return dataList;
@@ -31,7 +29,16 @@ public class DbParser {
         }
     }
 
-    public static Map<String, Double> parseYaml(Path path) {
-        return new HashMap<>();
+    public static Map<String, List<Double>> parseYaml(Path path) {
+        File file = path.toFile();
+        try {
+            Yaml yaml = new Yaml();
+            InputStream inputStream = new FileInputStream(file);
+            Map<String, List<Double>> parsed = (Map<String, List<Double>>) yaml.load(inputStream);
+            return parsed;
+        } catch (NumberFormatException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
+
