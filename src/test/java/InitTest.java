@@ -4,8 +4,9 @@ import org.martinmeer.utils.ParamNames;
 import org.martinmeer.db.*;
 import org.martinmeer.utils.PitchRanges;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InitTest {
 
@@ -55,9 +56,16 @@ public class InitTest {
 
     @Test
     public void testInitD2Tolerances() {
+        int mapSize = 10;
         int d2Tolerances_45_90_4_size = 8;
+        var innerMapKey = 1;
+        Double[] innerMapValue = {50d, null};
 
-        assertEquals(d2Tolerances_45_90_4_size, d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(4.0).size());
+        assertEquals(mapSize, d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).size());
+        assertTrue(d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).containsKey(innerMapKey));
+        assertEquals(d2Tolerances_45_90_4_size, d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(1).size());
+        //assertEquals(innerMapValue[0], d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(0.5).get(0));
+        //assertNull(d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(0.5).get(7));
 
 
     }

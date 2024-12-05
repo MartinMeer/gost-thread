@@ -26,6 +26,8 @@ public class PathMap {
         pathMap.put(PitchRanges.s2_8e5_6, pathGen("d2-tolerance-2.8-5.6.yml"));
         pathMap.put(PitchRanges.s5_6e11_2, pathGen("d2-tolerance-5.6-11.2.yml"));
         pathMap.put(PitchRanges.s11_2e22_4, pathGen("d2-tolerance-11.2-22.4.yml"));
+        pathMap.put(PitchRanges.s22_4e45, pathGen("d2-tolerance-22.4-45.yml"));
+        pathMap.put(PitchRanges.s45e90, pathGen("d2-tolerance-45-90.yml"));
         return (Map<PitchRanges, Path>) mapper(pathMap);
     }
     private Map<?, Path> mapper(Map<?, String> map) {
@@ -34,7 +36,7 @@ public class PathMap {
     }
     private String pathGen(String fileName) {
         if (fileName.startsWith("d2")) {
-            return "src/main/resources/d2-tolerances/";
+            return "src/main/resources/d2-tolerances/" + fileName;
         }
         return "src/main/resources/" + fileName;
     }
