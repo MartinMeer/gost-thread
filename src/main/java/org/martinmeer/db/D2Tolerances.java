@@ -11,5 +11,5 @@ import java.util.Map;
 @AllArgsConstructor
 public class D2Tolerances {
 
-    private Map<PitchRanges, Map<Number, List<Double>>> d2TolerancesMap;
+    private Map<PitchRanges, Map<Double, List<Double>>> d2TolerancesMap;
 }

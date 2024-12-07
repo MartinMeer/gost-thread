@@ -58,16 +58,14 @@ public class InitTest {
     public void testInitD2Tolerances() {
         int mapSize = 10;
         int d2Tolerances_45_90_4_size = 8;
-        var innerMapKey = 1;
-        Double[] innerMapValue = {50d, null};
+        var innerMapKey = 2;
+        Double innerMapValue = 90.0;
 
         assertEquals(mapSize, d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).size());
         assertTrue(d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).containsKey(innerMapKey));
-        assertEquals(d2Tolerances_45_90_4_size, d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(1).size());
-        //assertEquals(innerMapValue[0], d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(0.5).get(0));
-        //assertNull(d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(0.5).get(7));
-
-
+        assertEquals(d2Tolerances_45_90_4_size, d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(0.5).size());
+        assertEquals(innerMapValue, d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(innerMapKey).get(1));
+        assertNull(d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(0.5).get(7));
     }
 
 

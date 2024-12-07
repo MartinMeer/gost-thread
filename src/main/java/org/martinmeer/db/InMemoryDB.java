@@ -16,7 +16,7 @@ public class InMemoryDB {
     private List<Double> pitchesList;
     private Map<String, List<Double>> deviationsMap;
     private Map<Integer, List<Double>> ndTolerancesMap;
-    private Map<PitchRanges, Map<Number, List<Double>>> d2TolerancesMap;
+    private Map<PitchRanges, Map<Double, List<Double>>> d2TolerancesMap;
 
     public void initialize(PathMap pathMap) {
         pitchesList = DbParser.parseTxt(pathMap.pathMapPDND().get(ParamNames.PITCHES));
