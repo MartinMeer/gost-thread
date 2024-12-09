@@ -50,32 +50,39 @@ public class InitTest {
     public void testInitNdTolerances() {
         int ndTolerancesSize = 3;
         int valueSize = 25;
-        assertEquals(ndTolerancesSize, ndTolerances.getNdTolerancesMap().size());
-        assertEquals(valueSize, ndTolerances.getNdTolerancesMap().get(6).size());
+        assertEquals(ndTolerancesSize, ndTolerances
+                .getNdTolerancesMap().size());
+        assertEquals(valueSize, ndTolerances
+                .getNdTolerancesMap().get(6).size());
     }
 
     @Test
     public void testInitD2Tolerances() {
         int mapSize = 10;
         int d2Tolerances_45_90_4_size = 8;
-        var innerMapKey = 2;
-        Double innerMapValue = 90.0;
+        var innerMapKey = 1.5;
+        var innerMapValue = 100;
 
-        assertEquals(mapSize, d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).size());
-        assertTrue(d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).containsKey(innerMapKey));
-        assertEquals(d2Tolerances_45_90_4_size, d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(0.5).size());
-        assertEquals(innerMapValue, d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(innerMapKey).get(1));
-        assertNull(d2Tolerances.getD2TolerancesMap().get(PitchRanges.s45e90).get(0.5).get(7));
+        assertEquals(mapSize, d2Tolerances
+                .getD2TolerancesMap()
+                .get(PitchRanges.s45e90)
+                .size());
+        assertTrue(d2Tolerances
+                .getD2TolerancesMap()
+                .get(PitchRanges.s45e90)
+                .containsKey(innerMapKey));
+        assertEquals(d2Tolerances_45_90_4_size, d2Tolerances
+                .getD2TolerancesMap()
+                .get(PitchRanges.s45e90)
+                .get(0.5).size());
+        assertEquals(innerMapValue, d2Tolerances
+                .getD2TolerancesMap()
+                .get(PitchRanges.s45e90)
+                .get(innerMapKey)
+                .get(0));
+        assertNull(d2Tolerances
+                .getD2TolerancesMap()
+                .get(PitchRanges.s45e90)
+                .get(0.5).get(7));
     }
-
-
-
-
-
-
-
-
-
-
-
 }

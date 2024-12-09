@@ -9,5 +9,5 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public class NdTolerances {
-    private Map<Integer, List<Double>> ndTolerancesMap;
+    private Map<Integer, List<Number>> ndTolerancesMap;
 }

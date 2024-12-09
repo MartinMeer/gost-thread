@@ -9,5 +9,5 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Deviations {
-    private final Map<String, List<Double>> deviationsMap;
+    private final Map<String, List<Number>> deviationsMap;
 }

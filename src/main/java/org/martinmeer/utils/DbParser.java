@@ -26,7 +26,7 @@ public class DbParser {
         }
     }
 
-    public static <T> Map<T, List<Double>> parseYaml(Path path) {
+    public static <T> Map<T, List<Number>> parseYaml(Path path) {
         File file = path.toFile();
         try {
             Yaml yaml = new Yaml();
