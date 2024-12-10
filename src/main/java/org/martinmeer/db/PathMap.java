@@ -12,11 +12,11 @@ import java.util.stream.Collectors;
 
 public class PathMap {
 
-    public Map<ParamNames, Path> pathMapPDND() {
+    public Map<ParamNames, Path> pathMapPitch_Deviance_d() {
         Map<ParamNames, String> pathMap = new HashMap<>();
         pathMap.put(ParamNames.PITCHES, pathGen("Pitches"));
         pathMap.put(ParamNames.DEVIATIONS, pathGen("Deviations.yml"));
-        pathMap.put(ParamNames.NDTOLERANCES, pathGen("nd-tolerances.yml"));
+        pathMap.put(ParamNames.TOLERANCES_d, pathGen("d-tolerances.yml"));
         return (Map<ParamNames, Path>) mapper(pathMap);
     }
     public Map<PitchRanges, Path> pathMap_d2() {

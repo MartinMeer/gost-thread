@@ -8,6 +8,6 @@ import java.util.Map;
 
 @Getter
 @AllArgsConstructor
-public class NdTolerances {
-    private Map<Integer, List<Number>> ndTolerancesMap;
+public class Tolerances_d {
+    private Map<Integer, List<Number>> d_TolerancesMap;
 }

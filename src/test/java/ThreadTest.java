@@ -1,11 +1,11 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.*;
-import org.martinmeer.BasicPitchDiam;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -13,46 +13,67 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ThreadTest {
 
-    public static BasicPitchDiam d2;
+    private static String inputEn;
+    private static String inputRu;
+
 
     @BeforeAll
     public static void setUp() {
-        d2 = new BasicPitchDiam(8, 1.2);
+        inputEn = "M33x2-6e";
+        inputRu = "М33х2-6е";
     }
 
     @Test
-    public void basicPitchDiamTest() {
+    public void d_Test() {
+        double expected = 33;
+        double actual = 0;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void d2_Test() {
         double expected = 31.701;
-        double actual = d2.generate();
+        double actual = 0;
         assertEquals(expected, actual);
     }
 
     @Test
     public void deviationTest() {
-        double nominalPitchDiam = d2.generate();
-        DeviationsGen e = new DeviationsGen(nominalPitchDiam);
-        double[] expected = {-0.071, -0.241};
-        double[] actual = e.generate();
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void measuringValuesTest() {
-        double nominalPitchDiam = d2.generate();
-        MeasuringValuesGen mv = new MeasuringValuesGen(nominalPitchDiam);
-        double[] expected = {31.630, 31.460};
-        double[] actual = mv.generate();
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void threadGenTestGenerate() throws IOException {
-        Path fixture = Path.of("treadGenStringOutput");
-        ThreadMeasuringGen tmg = new ThreadMeasuringGen("M33x2-6e");
-        Map<String, Double> threadMeasuringValues = tmg.generateMapOfMeasuringVal();
-        OutputGen outputGen = new OutputGen(threadMeasuringValues);
-        String expected = Files.readString(fixture);
-        String actual = outputGen.print();
+        double expected = 0.071;
+        double actual = 0;
         assertEquals(expected, actual);
+    }
+    @Test
+    public void d_TolerancesTest() {
+        double[] actual = {-0.071, -0.351};
+        double[] expected = null;
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void d2_TolerancesTest() {
+        double[] actual = {-0.071, -0.241};
+        double[] expected = null;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void initTest() {
+
+    }
+
+    @Test
+    public void d_measuringValuesTest() {
+
+        double[] expected = {32.929, 32.649};
+        double[] actual = null;
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void d2_measuringValuesTest() {
+        double[] expected = {31.630, 31.460};
+        double[] actual = null;
+        assertArrayEquals(expected, actual);
     }
 }

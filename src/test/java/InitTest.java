@@ -4,8 +4,6 @@ import org.martinmeer.utils.ParamNames;
 import org.martinmeer.db.*;
 import org.martinmeer.utils.PitchRanges;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class InitTest {
@@ -13,8 +11,8 @@ public class InitTest {
     private static ParamNames dbNames;
     private static Pitches pitches;
     private static Deviations deviations;
-    private static NdTolerances ndTolerances;
-    private static D2Tolerances d2Tolerances;
+    private static Tolerances_d tolerancesD;
+    private static Tolerances_d2 tolerancesD2;
 
     @BeforeAll
     public static void setUp() {
@@ -23,8 +21,8 @@ public class InitTest {
         imDB.initialize(pathMap);
         pitches = new Pitches(imDB.getPitchesList());
         deviations = new Deviations(imDB.getDeviationsMap());
-        ndTolerances = new NdTolerances(imDB.getNdTolerancesMap());
-        d2Tolerances = new D2Tolerances(imDB.getD2TolerancesMap());
+        tolerancesD = new Tolerances_d(imDB.getD_TolerancesMap());
+        tolerancesD2 = new Tolerances_d2(imDB.getD2_TolerancesMap());
 
     }
 
@@ -50,10 +48,10 @@ public class InitTest {
     public void testInitNdTolerances() {
         int ndTolerancesSize = 3;
         int valueSize = 25;
-        assertEquals(ndTolerancesSize, ndTolerances
-                .getNdTolerancesMap().size());
-        assertEquals(valueSize, ndTolerances
-                .getNdTolerancesMap().get(6).size());
+        assertEquals(ndTolerancesSize, tolerancesD
+                .getD_TolerancesMap().size());
+        assertEquals(valueSize, tolerancesD
+                .getD_TolerancesMap().get(6).size());
     }
 
     @Test
@@ -63,25 +61,25 @@ public class InitTest {
         var innerMapKey = 1.5;
         var innerMapValue = 100;
 
-        assertEquals(mapSize, d2Tolerances
-                .getD2TolerancesMap()
+        assertEquals(mapSize, tolerancesD2
+                .getD2_TolerancesMap()
                 .get(PitchRanges.s45e90)
                 .size());
-        assertTrue(d2Tolerances
-                .getD2TolerancesMap()
+        assertTrue(tolerancesD2
+                .getD2_TolerancesMap()
                 .get(PitchRanges.s45e90)
                 .containsKey(innerMapKey));
-        assertEquals(d2Tolerances_45_90_4_size, d2Tolerances
-                .getD2TolerancesMap()
+        assertEquals(d2Tolerances_45_90_4_size, tolerancesD2
+                .getD2_TolerancesMap()
                 .get(PitchRanges.s45e90)
                 .get(0.5).size());
-        assertEquals(innerMapValue, d2Tolerances
-                .getD2TolerancesMap()
+        assertEquals(innerMapValue, tolerancesD2
+                .getD2_TolerancesMap()
                 .get(PitchRanges.s45e90)
                 .get(innerMapKey)
                 .get(0));
-        assertNull(d2Tolerances
-                .getD2TolerancesMap()
+        assertNull(tolerancesD2
+                .getD2_TolerancesMap()
                 .get(PitchRanges.s45e90)
                 .get(0.5).get(7));
     }

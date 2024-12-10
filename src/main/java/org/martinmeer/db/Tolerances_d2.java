@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Getter
 @AllArgsConstructor
-public class D2Tolerances {
+public class Tolerances_d2 {
 
-    private Map<PitchRanges, Map<Number, List<Number>>> d2TolerancesMap;
+    private Map<PitchRanges, Map<Number, List<Number>>> d2_TolerancesMap;
 }
