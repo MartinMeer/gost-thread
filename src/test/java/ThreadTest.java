@@ -1,34 +1,33 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.martinmeer.Diameter_d2;
+import org.martinmeer.db.InMemoryDB;
+import org.martinmeer.db.PathMap;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ThreadTest {
 
+
+    private static PathMap pathMap;
+    private static InMemoryDB inMemoryDB;
     private static String inputEn;
-    private static String inputRu;
-    private static String inputEnStar;
-    private static String inputRuStar;
+
 
 
     @BeforeAll
     public static void setUp() {
+        pathMap = new PathMap();
+        inMemoryDB = new InMemoryDB(pathMap);
         inputEn = "M33x2-6e";
-        inputRu = "М33х2-6е";
-        inputEnStar = "M33*2-6e";
-        inputRuStar = "М33*2-6е";
     }
 
-    @Test
-    public void d_Test() {
-        double expected = 33;
-        double actual = 0;
-        assertEquals(expected, actual);
-    }
+
 
     @Test
     public void d2_Test() {
+
         double expected = 31.701;
         double actual = 0;
         assertEquals(expected, actual);
@@ -52,11 +51,6 @@ public class ThreadTest {
         double[] actual = {-0.071, -0.241};
         double[] expected = null;
         assertEquals(expected, actual);
-    }
-
-    @Test
-    public void initTest() {
-
     }
 
     @Test

@@ -1,6 +1,7 @@
 package org.martinmeer;
 
 public class MeasuringValuesGen {
+
     public MeasuringValuesGen(double d2) {
     }
 

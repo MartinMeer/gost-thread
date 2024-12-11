@@ -12,12 +12,17 @@ import java.util.stream.Collectors;
 @Getter
 public class InMemoryDB {
 
+    private PathMap pathMap;
     private List<Double> pitchesList;
     private Map<String, List<Number>> deviationsMap;
     private Map<Integer, List<Number>> d_TolerancesMap;
     private Map<PitchRanges, Map<Number, List<Number>>> d2_TolerancesMap;
 
-    public void initialize(PathMap pathMap) {
+    public InMemoryDB(PathMap pathMap) {
+        this.pathMap = pathMap;
+    }
+
+    public void initialize() {
         pitchesList = DbParser.parseTxt(pathMap.pathMapPitch_Deviance_d().get(ParamNames.PITCHES));
         deviationsMap = DbParser.parseYaml(pathMap.pathMapPitch_Deviance_d().get(ParamNames.DEVIATIONS));
         d_TolerancesMap = DbParser.parseYaml(pathMap.pathMapPitch_Deviance_d().get(ParamNames.TOLERANCES_d));

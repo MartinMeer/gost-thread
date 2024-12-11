@@ -16,9 +16,10 @@ public class InitTest {
 
     @BeforeAll
     public static void setUp() {
-        InMemoryDB imDB = new InMemoryDB();
+
         PathMap pathMap = new PathMap();
-        imDB.initialize(pathMap);
+        InMemoryDB imDB = new InMemoryDB(pathMap);
+        imDB.initialize();
         pitches = new Pitches(imDB.getPitchesList());
         deviations = new Deviations(imDB.getDeviationsMap());
         tolerancesD = new Tolerances_d(imDB.getD_TolerancesMap());
@@ -40,18 +41,26 @@ public class InitTest {
     public void testInitDeviations() {
         int deviationsSize = 5;
         int valueSize = 25;
-        assertEquals(deviationsSize, deviations.getDeviationsMap().size());
-        assertEquals(valueSize, deviations.getDeviationsMap().get("e").size());
-        assertTrue(deviations.getDeviationsMap().get("e").contains(null));
+        assertEquals(deviationsSize, deviations.getDeviationsMap()
+                .size());
+        assertEquals(valueSize, deviations.getDeviationsMap()
+                .get("e")
+                .size());
+        assertTrue(deviations.getDeviationsMap()
+                .get("e")
+                .contains(null));
     }
     @Test
     public void testInitNdTolerances() {
         int ndTolerancesSize = 3;
         int valueSize = 25;
         assertEquals(ndTolerancesSize, tolerancesD
-                .getD_TolerancesMap().size());
+                .getD_TolerancesMap()
+                .size());
         assertEquals(valueSize, tolerancesD
-                .getD_TolerancesMap().get(6).size());
+                .getD_TolerancesMap()
+                .get(6)
+                .size());
     }
 
     @Test
