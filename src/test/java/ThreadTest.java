@@ -1,12 +1,5 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.martinmeer.*;
-
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,12 +8,16 @@ public class ThreadTest {
 
     private static String inputEn;
     private static String inputRu;
+    private static String inputEnStar;
+    private static String inputRuStar;
 
 
     @BeforeAll
     public static void setUp() {
         inputEn = "M33x2-6e";
         inputRu = "М33х2-6е";
+        inputEnStar = "M33*2-6e";
+        inputRuStar = "М33*2-6е";
     }
 
     @Test
