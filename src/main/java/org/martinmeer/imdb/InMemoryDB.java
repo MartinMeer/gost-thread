@@ -1,6 +1,7 @@
-package org.martinmeer.db;
+package org.martinmeer.imdb;
 
 import lombok.Getter;
+import org.martinmeer.db.PathMap;
 import org.martinmeer.utils.ParamNames;
 import org.martinmeer.utils.DbParser;
 import org.martinmeer.utils.PitchRanges;

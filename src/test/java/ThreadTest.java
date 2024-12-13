@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.martinmeer.Diameter_d2;
-import org.martinmeer.db.InMemoryDB;
+import org.martinmeer.imdb.InMemoryDB;
 import org.martinmeer.db.PathMap;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;

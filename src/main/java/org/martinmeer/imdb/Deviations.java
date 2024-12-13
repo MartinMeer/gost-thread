@@ -1,4 +1,4 @@
-package org.martinmeer.db;
+package org.martinmeer.imdb;
 
 import java.util.List;
 import java.util.Map;

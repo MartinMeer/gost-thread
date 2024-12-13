@@ -1,6 +1,4 @@
 import org.junit.jupiter.api.BeforeAll;
-import org.martinmeer.db.InMemoryDB;
-import org.martinmeer.db.PathMap;
 import org.martinmeer.io.InputConverter;
 
 public class InputConverterTest {
