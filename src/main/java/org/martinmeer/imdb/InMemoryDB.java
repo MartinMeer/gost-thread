@@ -23,11 +23,15 @@ public class InMemoryDB {
         this.pathMap = pathMap;
     }
 
-    public void initialize() {
+    public void initializeFileDB() {
         pitchesList = DbParser.parseTxt(pathMap.pathMapPitch_Deviance_d().get(ParamNames.PITCHES));
         deviationsMap = DbParser.parseYaml(pathMap.pathMapPitch_Deviance_d().get(ParamNames.DEVIATIONS));
         d_TolerancesMap = DbParser.parseYaml(pathMap.pathMapPitch_Deviance_d().get(ParamNames.TOLERANCES_d));
         d2_TolerancesMap = pathMap.pathMap_d2().entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, value -> DbParser.parseYaml(value.getValue())));
+    }
+
+    public void initializeJDBC() {
+
     }
 }

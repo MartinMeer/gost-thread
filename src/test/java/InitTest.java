@@ -20,7 +20,7 @@ public class InitTest {
 
         PathMap pathMap = new PathMap();
         InMemoryDB imDB = new InMemoryDB(pathMap);
-        imDB.initialize();
+        imDB.initializeFileDB();
         pitches = new Pitches(imDB.getPitchesList());
         deviations = new Deviations(imDB.getDeviationsMap());
         tolerancesD = new Tolerances_d(imDB.getD_TolerancesMap());
