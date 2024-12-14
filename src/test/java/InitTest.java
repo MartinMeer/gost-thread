@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.martinmeer.db.PathMap;
+import org.martinmeer.utils.PathMap;
 import org.martinmeer.utils.ParamNames;
 import org.martinmeer.imdb.*;
 import org.martinmeer.utils.PitchRanges;

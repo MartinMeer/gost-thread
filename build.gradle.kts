@@ -24,6 +24,7 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.14.0")
     implementation("org.apache.commons:commons-math3:3.6.1")
     implementation("info.picocli:picocli:4.7.6")
+    implementation("org.postgresql:postgresql:42.7.2")
 
     //Lombok
     compileOnly("org.projectlombok:lombok:1.18.32")

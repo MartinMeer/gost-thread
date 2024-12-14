@@ -26,7 +26,17 @@ public class DbParser {
         }
     }
 
-    public static <T> Map<T, List<Number>> parseYaml(Path path) {
+    /*public static <T> Map<T, List<Number>> parseYaml(Path path) {
+        File file = path.toFile();
+        try {
+            Yaml yaml = new Yaml();
+            InputStream inputStream = new FileInputStream(file);
+            return yaml.load(inputStream);
+        } catch (NumberFormatException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }*/
+    public static <T> T parseYaml(Path path) {
         File file = path.toFile();
         try {
             Yaml yaml = new Yaml();

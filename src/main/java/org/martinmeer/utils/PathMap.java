@@ -1,26 +1,21 @@
-package org.martinmeer.db;
-
-import org.martinmeer.utils.ParamNames;
-import org.martinmeer.utils.PitchRanges;
+package org.martinmeer.utils;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 
 public class PathMap {
 
     public Map<ParamNames, Path> pathMapPitch_Deviance_d() {
-        Map<ParamNames, String> pathMap = new HashMap<>();
+        Map<ParamNames, Path> pathMap = new HashMap<>();
         pathMap.put(ParamNames.PITCHES, pathGen("Pitches"));
         pathMap.put(ParamNames.DEVIATIONS, pathGen("Deviations.yml"));
         pathMap.put(ParamNames.TOLERANCES_d, pathGen("d-tolerances.yml"));
-        return (Map<ParamNames, Path>) mapper(pathMap);
+        return pathMap;
     }
     public Map<PitchRanges, Path> pathMap_d2() {
-        Map<PitchRanges, String> pathMap = new HashMap<>();
+        Map<PitchRanges, Path> pathMap = new HashMap<>();
         pathMap.put(PitchRanges.s1e1_4, pathGen("d2-tolerance-1-1.4.yml"));
         pathMap.put(PitchRanges.s1_4e2_8, pathGen("d2-tolerance-1.4-2.8.yml"));
         pathMap.put(PitchRanges.s2_8e5_6, pathGen("d2-tolerance-2.8-5.6.yml"));
@@ -28,16 +23,28 @@ public class PathMap {
         pathMap.put(PitchRanges.s11_2e22_4, pathGen("d2-tolerance-11.2-22.4.yml"));
         pathMap.put(PitchRanges.s22_4e45, pathGen("d2-tolerance-22.4-45.yml"));
         pathMap.put(PitchRanges.s45e90, pathGen("d2-tolerance-45-90.yml"));
-        return (Map<PitchRanges, Path>) mapper(pathMap);
+        return pathMap;
     }
-    private Map<?, Path> mapper(Map<?, String> map) {
+    public Map<String, Path> pathToProperties() {
+        Map<String, Path> pathToProperties = new HashMap<>();
+        pathToProperties.put("psql_url", pathGen("psql_url.yml"));
+        pathToProperties.put("db_users", pathGen("db_users.yml"));
+        return pathToProperties;
+    }
+
+
+    /*private Map<T, Path> mapper(Map<T, Path> map) {
         return map.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, value -> Paths.get(value.getValue()).toAbsolutePath().normalize()));
-    }
-    private String pathGen(String fileName) {
+                .collect(Collectors.toMap(Map.Entry::getKey, value -> value.getValue().toAbsolutePath().normalize()));
+    }*/
+    private Path pathGen(String fileName) {
         if (fileName.startsWith("d2")) {
-            return "src/main/resources/d2-tolerances/" + fileName;
+            return Path.of("src/main/resources/d2-tolerances/" + fileName)
+                    .toAbsolutePath()
+                    .normalize();
         }
-        return "src/main/resources/" + fileName;
+        return Path.of("src/main/resources/" + fileName)
+                .toAbsolutePath()
+                .normalize();
     }
 }

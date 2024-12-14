@@ -1,7 +1,7 @@
 package org.martinmeer.imdb;
 
 import lombok.Getter;
-import org.martinmeer.db.PathMap;
+import org.martinmeer.utils.PathMap;
 import org.martinmeer.utils.ParamNames;
 import org.martinmeer.utils.DbParser;
 import org.martinmeer.utils.PitchRanges;
@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Getter
-public class InMemoryDB {
+public class InMemoryDB<T> {
 
     private PathMap pathMap;
     private List<Double> pitchesList;
