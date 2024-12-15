@@ -1,4 +1,3 @@
-/*
 package org.martinmeer.db;
 
 import java.sql.Connection;
@@ -11,13 +10,13 @@ public class Connector {
     public Connector(String driver, Map propertyMap) {
     }
 
-    public static Connection psqlConnection() {
-        Properties properties = new Properties.of();
-        properties.put(p)
-
-        return new Connection(DriverManager.getConnection());
+    public Connection psqlConnection() {
+        var conn = DriverManager.getConnection(propertyManager.getUrl(),
+                propertyManager.getProperties()
+                        .get("username"),
+                propertyManager.getProperties()
+                        .get("password"));
     }
 
 
 }
-*/

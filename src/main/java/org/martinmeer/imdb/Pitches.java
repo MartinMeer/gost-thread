@@ -8,4 +8,6 @@ import java.util.*;
 @AllArgsConstructor
 public class Pitches {
     private final List<Double> pitchesList;
+
+
 }

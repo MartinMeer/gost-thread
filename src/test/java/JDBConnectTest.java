@@ -41,16 +41,16 @@ public class JDBConnectTest {
                 propertyManager.getProperties()
                         .get("password"));
 
-        var sql = "SELECT * FROM pitches;";
+        var sql = "SELECT * FROM pitches WHERE pitch = 1;";
         var statement = conn.createStatement();
         var set = statement.executeQuery(sql);
         StringBuilder str = new StringBuilder();
 
         while (set.next()) {
-            str.append(set.getString(1)).append("\n");
+            str.append(set.getString(1));
         }
         conn.close();
-        assertThat(str.toString()).isEqualTo("");
+        assertThat(str.toString()).isEqualTo("1");
 
 
     }

@@ -32,11 +32,6 @@ public class PathMap {
         return pathToProperties;
     }
 
-
-    /*private Map<T, Path> mapper(Map<T, Path> map) {
-        return map.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, value -> value.getValue().toAbsolutePath().normalize()));
-    }*/
     private Path pathGen(String fileName) {
         if (fileName.startsWith("d2")) {
             return Path.of("src/main/resources/d2-tolerances/" + fileName)

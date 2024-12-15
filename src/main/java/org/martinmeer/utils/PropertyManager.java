@@ -1,29 +1,19 @@
 package org.martinmeer.utils;
 
-import lombok.Getter;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.*;
 
-@Getter
 public class PropertyManager {
 
-    private final Map<String,Path> pathToProperties;
-    private String url;
-    private Map<String,String> properties;
-
-    public PropertyManager(Map<String,Path> pathToProperties) throws IOException {
-        this.pathToProperties = pathToProperties;
-        generateProps();
-    }
-    private void generateProps() throws IOException {
-        Map<String, String> urlMap = DbParser.parseYaml(pathToProperties.get("psql_url"));
-        url = "jdbc:"
-                + urlMap.get("subprotocol")
+    public static Map<String, String> generateProps(Map<String,Path> pathToProperties) throws IOException {
+        Map<String, String> connSettings = new HashMap<>(DbParser.parseYaml(pathToProperties.get("db_users")));
+        Map<String, String> url = DbParser.parseYaml(pathToProperties.get("psql_url"));
+        connSettings.put("url", "jdbc:"
+                + url.get("subprotocol")
                 + ":"
-                + urlMap.get("subname")
-                + urlMap.get("subsubname");
-        properties = DbParser.parseYaml(pathToProperties.get("db_users"));
+                + url.get("subname")
+                + url.get("subsubname"));
+        return connSettings;
     }
 }
