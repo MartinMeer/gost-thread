@@ -6,8 +6,7 @@ import lombok.Getter;
 import java.util.*;
 @Getter
 @AllArgsConstructor
-public class Pitches {
+public class Pitch {
     private final List<Double> pitchesList;
-
 
 }

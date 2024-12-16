@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class InitTest {
 
     private static ParamNames dbNames;
-    private static Pitches pitches;
+    private static Pitch pitch;
     private static Deviations deviations;
     private static Tolerances_d tolerancesD;
     private static Tolerances_d2 tolerancesD2;
@@ -21,7 +21,7 @@ public class InitTest {
         PathMap pathMap = new PathMap();
         InMemoryDB imDB = new InMemoryDB(pathMap);
         imDB.initializeFileDB();
-        pitches = new Pitches(imDB.getPitchesList());
+        pitch = new Pitch(imDB.getPitchesList());
         deviations = new Deviations(imDB.getDeviationsMap());
         tolerancesD = new Tolerances_d(imDB.getD_TolerancesMap());
         tolerancesD2 = new Tolerances_d2(imDB.getD2_TolerancesMap());
@@ -31,7 +31,7 @@ public class InitTest {
     @Test
     public void testInitPitches() {
         int pitchesSize = 25;
-        assertEquals(pitchesSize, pitches.getPitchesList().size());
+        assertEquals(pitchesSize, pitch.getPitchesList().size());
     }
     @Test
     public void testDeviationsMap() {

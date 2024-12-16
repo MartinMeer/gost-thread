@@ -1,17 +1,23 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.martinmeer.d2_calc.Diam_d2;
 import org.martinmeer.imdb.InMemoryDB;
+import org.martinmeer.imdb.Pitch;
+import org.martinmeer.io.InputMap;
 import org.martinmeer.utils.PathMap;
+
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ThreadTest {
+public class MainTest {
 
 
     private static PathMap pathMap;
     private static InMemoryDB inMemoryDB;
     private static String inputEn;
+    private static InputMap inputMap;
 
 
 
@@ -20,33 +26,35 @@ public class ThreadTest {
         pathMap = new PathMap();
         inMemoryDB = new InMemoryDB(pathMap);
         inputEn = "M33x2-6e";
+        inputMap = new InputMap(inputEn);
     }
 
 
 
     @Test
     public void d2_Test() {
-
-        double expected = 31.701;
-        double actual = 0;
+        Pitch pitch = new Pitch();
+        Diam_d2 diam_d2 = new Diam_d2();
+        String expected = "31.701";
+        String actual = diam_d2.toString();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void deviationTest() {
+    public void esTest() {
         double expected = 0.071;
         double actual = 0;
         assertEquals(expected, actual);
     }
     @Test
-    public void d_TolerancesTest() {
+    public void d_esTest() {
         double[] actual = {-0.071, -0.351};
         double[] expected = null;
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void d2_TolerancesTest() {
+    public void ei_d2Test() {
         double[] actual = {-0.071, -0.241};
         double[] expected = null;
         assertEquals(expected, actual);
