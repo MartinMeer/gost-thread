@@ -15,7 +15,7 @@ public class MainTest {
 
 
     private static PathMap pathMap;
-    private static InMemoryDB inMemoryDB;
+    private static InMemoryDB imdb;
     private static String inputEn;
     private static InputMap inputMap;
 
@@ -26,23 +26,21 @@ public class MainTest {
         inputEn = "M33x2-6e";
         pathMap = new PathMap();
         inputMap = new InputMap(inputEn);
-        inMemoryDB = new InMemoryDB(pathMap);
+        imdb = new InMemoryDB(pathMap);
     }
 
     @Test
     public void pitchTest() {
         Pitch pitch = new Pitch(inputMap.getPitch());
-        assertThat(2).isEqualTo(pitch.getPitch());
+        assertThat(pitch.getPitch()).isEqualTo(2);
     }
 
     @Test
     public void deviationTest() {
         Pitch pitch = new Pitch(inputMap.getPitch());
-        Deviation deviation = new Deviation(pitch, inputMap
-                .getDeviation())
-                .setDeviation(inMemoryDB.getDeviationsMap(), inMemoryDB.getPitchesList());
-        assertThat()
-
+        Deviation deviation = new Deviation(pitch, inputMap.getDeviation())
+                .setDeviation(imdb.getDeviationsMap(), imdb.getPitchesList());
+        assertThat(deviation.getDeviation()).isEqualTo(71);
     }
 
 
@@ -50,7 +48,7 @@ public class MainTest {
 
     @Test
     public void d2_Test() {
-        Pitch pitch = new Pitch();
+        Pitch pitch = new Pitch(inputMap.getPitch());
         Diam_d2 diam_d2 = new Diam_d2();
         String expected = "31.701";
         String actual = diam_d2.toString();

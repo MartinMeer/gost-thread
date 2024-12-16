@@ -1,5 +1,7 @@
 package org.martinmeer.imdb;
 
+import lombok.Getter;
+
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +9,7 @@ public class Deviation {
 
     private final Pitch pitch;
     private final String inputDeviation;
+    @Getter
     private int deviation;
 
     public Deviation(Pitch pitch, String inputDeviation) {

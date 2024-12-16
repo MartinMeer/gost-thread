@@ -6,8 +6,8 @@ import lombok.Getter;
 public class Pitch {
     private final double pitch;
 
-    public Pitch(String pitch) {
-        this.pitch = Double.parseDouble(pitch);
+    public Pitch(String inputPitch) {
+        pitch = Double.parseDouble(inputPitch);
     }
 
 }
