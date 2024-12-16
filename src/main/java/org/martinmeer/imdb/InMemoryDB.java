@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Getter
-public class InMemoryDB<T> {
+public class InMemoryDB {
 
     private PathMap pathMap;
     private List<Double> pitchesList;

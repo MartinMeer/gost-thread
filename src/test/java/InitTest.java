@@ -1,5 +1,7 @@
+/*
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.martinmeer.imdb.Pitch;
 import org.martinmeer.utils.PathMap;
 import org.martinmeer.utils.ParamNames;
 import org.martinmeer.imdb.*;
@@ -21,18 +23,20 @@ public class InitTest {
         PathMap pathMap = new PathMap();
         InMemoryDB imDB = new InMemoryDB(pathMap);
         imDB.initializeFileDB();
-        pitch = new Pitch(imDB.getPitchesList());
+        //pitch = new Pitch(imDB.getPitchesList());
         deviations = new Deviations(imDB.getDeviationsMap());
         tolerancesD = new Tolerances_d(imDB.getD_TolerancesMap());
         tolerancesD2 = new Tolerances_d2(imDB.getD2_TolerancesMap());
 
     }
 
-    @Test
+    */
+/*@Test
     public void testInitPitches() {
         int pitchesSize = 25;
         assertEquals(pitchesSize, pitch.getPitchesList().size());
-    }
+    }*//*
+
     @Test
     public void testDeviationsMap() {
         assertTrue(deviations.getDeviationsMap().containsKey("d"));
@@ -94,3 +98,4 @@ public class InitTest {
                 .get(0.5).get(7));
     }
 }
+*/

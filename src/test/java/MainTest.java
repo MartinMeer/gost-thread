@@ -1,13 +1,13 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.martinmeer.imdb.Deviation;
 import org.martinmeer.d2_calc.Diam_d2;
 import org.martinmeer.imdb.InMemoryDB;
 import org.martinmeer.imdb.Pitch;
 import org.martinmeer.io.InputMap;
 import org.martinmeer.utils.PathMap;
 
-import java.util.Map;
-
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -23,11 +23,28 @@ public class MainTest {
 
     @BeforeAll
     public static void setUp() {
-        pathMap = new PathMap();
-        inMemoryDB = new InMemoryDB(pathMap);
         inputEn = "M33x2-6e";
+        pathMap = new PathMap();
         inputMap = new InputMap(inputEn);
+        inMemoryDB = new InMemoryDB(pathMap);
     }
+
+    @Test
+    public void pitchTest() {
+        Pitch pitch = new Pitch(inputMap.getPitch());
+        assertThat(2).isEqualTo(pitch.getPitch());
+    }
+
+    @Test
+    public void deviationTest() {
+        Pitch pitch = new Pitch(inputMap.getPitch());
+        Deviation deviation = new Deviation(pitch, inputMap
+                .getDeviation())
+                .setDeviation(inMemoryDB.getDeviationsMap(), inMemoryDB.getPitchesList());
+        assertThat()
+
+    }
+
 
 
 

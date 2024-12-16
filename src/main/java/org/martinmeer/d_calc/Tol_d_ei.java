@@ -1,4 +1,4 @@
 package org.martinmeer.d_calc;
 
-public class d_ei {
+public class Tol_d_ei {
 }
