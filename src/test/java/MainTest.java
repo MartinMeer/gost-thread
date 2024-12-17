@@ -4,8 +4,12 @@ import org.martinmeer.d2_calc.Diam_d2;
 import org.martinmeer.imdb.InMemoryDB;
 import org.martinmeer.imdb.Pitch;
 import org.martinmeer.io.InputMap;
+import org.martinmeer.jbdc.Connector;
 import org.martinmeer.utils.PathMap;
+import org.martinmeer.utils.PropertyManager;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -18,15 +22,19 @@ public class MainTest {
     private static InMemoryDB inMemoryDB;
     private static String inputEn;
     private static InputMap inputMap;
+    private static PropertyManager propertyManager;
+    private static Connection connection;
 
 
 
     @BeforeAll
-    public static void setUp() {
+    public static void setUp() throws SQLException {
         pathMap = new PathMap();
-        inMemoryDB = new InMemoryDB(pathMap);
+        //inMemoryDB = new InMemoryDB(pathMap);
         inputEn = "M33x2-6e";
         inputMap = new InputMap(inputEn);
+        propertyManager = new PropertyManager(pathMap);
+        connection = Connector.psqlConnection(propertyManager);
     }
 
 
