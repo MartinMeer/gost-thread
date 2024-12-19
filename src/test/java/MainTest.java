@@ -41,7 +41,7 @@ public class MainTest {
 
     @Test
     public void d2_Test() {
-        Pitch pitch = new Pitch();
+        //Pitch pitch = new Pitch();
         Diam_d2 diam_d2 = new Diam_d2();
         String expected = "31.701";
         String actual = diam_d2.toString();

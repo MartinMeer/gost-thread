@@ -22,7 +22,7 @@ public class PitchDAO implements DAO<Double>{
     public Double getValue() throws SQLException {
         String sql = "SELECT pitch FROM pitches WHERE pitch = ?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setDouble(1, pitch.getPitch());
+        //pstmt.setDouble(1, pitch.getPitch());
         ResultSet rs = pstmt.executeQuery();
         return null;
     }
