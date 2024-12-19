@@ -16,13 +16,13 @@ public class InputConverter {
 
     private Map<String, String> spliterator() {
         var normalized = normalize(input);
-        String spacer = "-";
+        String delimiter = "-";
         Map<String, String> splitInput = new HashMap<>();
-        splitInput.put("nominalThread", normalized.split(spacer)[0]);
-        splitInput.put("pitchHelixPh", normalized.split(spacer)[1].split(spacer)[0]);
-        splitInput.put("threadToleranceField", normalized.split(spacer)[1]);
-        if (normalized.split(spacer).length > 2) {
-            splitInput.put("threadDirection", normalized.split(spacer)[2]);
+        splitInput.put("nominalThread", normalized.split(delimiter)[0]);
+        splitInput.put("pitchHelixAndPitch", normalized.split(delimiter)[1]);
+        splitInput.put("threadToleranceField", normalized.split(delimiter)[2]);
+        if (normalized.endsWith("-lh")) {
+            splitInput.put("threadDirection", normalized.substring(normalized.length() - 1, normalized.length() - 4));
         } else {
             splitInput.put("threadDirection", null);
         }
@@ -37,6 +37,7 @@ public class InputConverter {
                 .replace("*", "-")
                 .replace("м", "m")
                 .replace("р", "p")
+                .replaceAll("p\\d", "-")
                 .replace("н", "h")
                 .replace("е", "e");
     }
