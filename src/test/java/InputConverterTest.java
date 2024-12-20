@@ -19,10 +19,10 @@ public class InputConverterTest {
         inputEnStar = "M33*2-6e";
         inputRuStar = "М33*2-6е";
     }
-    /*@Test
+    @Test
     public void testNormalize() {
         inputConverter = new InputConverter(inputRu);
-        assertThat(inputConverter.normalize(inputRu)).isEqualTo("e");
-    }*/
+        assertThat(inputConverter.normalize(inputRu)).isEqualTo("m33-ph3-12");
+    }
 
 }
