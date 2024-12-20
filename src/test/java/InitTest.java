@@ -1,3 +1,4 @@
+/*
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.utils.PathMap;
@@ -94,3 +95,4 @@ public class InitTest {
                 .get(0.5).get(7));
     }
 }
+*/

@@ -1,4 +1,4 @@
-
+.PHONY: test
 run-dist:
 	./build/install/app/bin/app
 mkInstallDist:
@@ -9,10 +9,8 @@ lint:
 dependency:
 	./gradlew dependencyUpdates
 doc:
-	./gradlew javadoc
-
-.PHONY: test
+	./gradlew javadoccgc
 run-test:
-	./gradlew :test
+	./gradlew test
 	./gradlew checkstyleMain
 	./gradlew jacocoTestReport

@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.io.InputConverter;
+import org.martinmeer.utils.ParamNames;
+
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,9 +23,11 @@ public class InputConverterTest {
         inputRuStar = "М33*2-6е";
     }
     @Test
-    public void testNormalize() {
+    public void testInputMap() {
         inputConverter = new InputConverter(inputRu);
-        assertThat(inputConverter.normalize(inputRu)).isEqualTo("m33-ph3-12");
+        Map inputMap = inputConverter.generateInputMap();
+        assertThat(inputMap.get(ParamNames.DIRECTION)).isEqualTo("левая резьба");
+        assertThat(inputMap.get(ParamNames.NOMINAL_DIAMETER)).isEqualTo("33");
     }
 
 }

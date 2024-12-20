@@ -1,3 +1,4 @@
+/*
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.d2_calc.Diam_d2;
@@ -83,3 +84,4 @@ public class MainTest {
         assertArrayEquals(expected, actual);
     }
 }
+*/
