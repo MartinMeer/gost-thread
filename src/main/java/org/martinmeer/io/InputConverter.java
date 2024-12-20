@@ -1,11 +1,11 @@
 package org.martinmeer.io;
 
 import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
 import org.martinmeer.utils.ParamNames;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 @Getter
 public class InputConverter {
@@ -40,6 +40,17 @@ public class InputConverter {
                 return "многозаходная резьба";
             }
         }
+        return null;
+    }
+    private String pitch(String[] splitInput) {
+        if (splitInput.length > 1) {
+            String str = splitInput[1];
+            String pattern = "\\d";
+            if (Pattern.matches(pattern, str)) {
+                return str;
+            }
+        }
+        if (splitInput.length == )
         return null;
     }
 
