@@ -1,3 +1,4 @@
+/*
 package org.martinmeer.jbdc;
 
 import org.martinmeer.imdb.Pitch;
@@ -27,3 +28,4 @@ public class PitchDAO implements DAO<Double>{
         return null;
     }
 }
+*/

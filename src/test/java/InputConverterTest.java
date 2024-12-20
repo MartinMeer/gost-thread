@@ -5,6 +5,7 @@ import org.martinmeer.utils.ParamNames;
 
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputConverterTest {
@@ -18,16 +19,19 @@ public class InputConverterTest {
     @BeforeAll
     public static void setUp() {
         inputEn = "M33x2-6e";
-        inputRu = "  М33хРh3P12- 6е6G - LH";
+        inputRu = "  М33хРh3P0,45- 6е6G - LH";
         inputEnStar = "M33*2-6e";
         inputRuStar = "М33*2-6е";
     }
     @Test
     public void testInputMap() {
-        inputConverter = new InputConverter(inputRu);
+        inputConverter = new InputConverter(inputEn);
         Map inputMap = inputConverter.generateInputMap();
-        assertThat(inputMap.get(ParamNames.DIRECTION)).isEqualTo("левая резьба");
+        assertThat(inputMap.get(ParamNames.DIRECTION)).isEqualTo(null);
         assertThat(inputMap.get(ParamNames.NOMINAL_DIAMETER)).isEqualTo("33");
+        assertThat(inputMap.get(ParamNames.PITCH)).isEqualTo("2");
+        assertThat(inputMap.get(ParamNames.MULTISTART_TREAD)).isEqualTo(null);
+        assertThat(inputMap.get(ParamNames.TOLERANCE_FIELD)).isEqualTo("6e6g");
     }
 
 }
