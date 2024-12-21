@@ -1,17 +1,17 @@
 package org.martinmeer.utils;
 
-import org.martinmeer.imdb.Pitch;
-
 public enum ParamNames {
     PITCHES,
     DEVIATIONS,
     TOLERANCES_d,
+    PITCH_DIAM_TOLERANCE,
+    MAJOR_DIAM_TOLERANCE,
     PITCH,
     MULTISTART_TREAD,
-    TOLERANCE_FIELD,
-
+    TOLERANCE_ZONE,
+    DEVIATION,
     DIRECTION,
-    NOMINAL_DIAMETER,
+    NOMINAL_SIZE,
     PITCH_DIAMETER,
     MAJOR_DIAMETER;
 

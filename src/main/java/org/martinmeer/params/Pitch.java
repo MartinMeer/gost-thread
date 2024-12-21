@@ -1,12 +1,13 @@
-package org.martinmeer.imdb;
+/*
+package org.martinmeer.params;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.*;
 @Getter
-@AllArgsConstructor
+
 public class Pitch {
     private final List<Double> pitchesList;
 
 }
+*/

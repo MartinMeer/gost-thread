@@ -23,14 +23,18 @@ public class InputConverter {
         Map<ParamNames, String> inputMap = new HashMap<>();
 
         inputMap.put(ParamNames.DIRECTION, threadDirection(normalized));
-        inputMap.put(ParamNames.NOMINAL_DIAMETER, nominalDiameter(normalized));
+        inputMap.put(ParamNames.NOMINAL_SIZE, nominalSize(normalized));
         inputMap.put(ParamNames.MULTISTART_TREAD, multistartThread(normalized));
         inputMap.put(ParamNames.PITCH, pitch(normalized));
-        inputMap.put(ParamNames.TOLERANCE_FIELD, toleranceField(normalized) );
+        inputMap.put(ParamNames.TOLERANCE_ZONE, toleranceZone(normalized) );
         return inputMap;
     }
-
-    private String nominalDiameter(String normalized) {
+/**
+ * Attention!
+ * This method returns string representation of nominal thread size.
+ * Work correctly only with integer numbers
+ * It should be set constraint on user input (e.g "For threads with nominal size from 3 to 600 mm") */
+    private String nominalSize(String normalized) {
         String[] splitInput = normalized.split("-");
         String str = splitInput[0];
         return str.substring(1);
@@ -63,7 +67,7 @@ public class InputConverter {
         }
         return null;
     }
-    private String toleranceField(String normalized) {
+    private String toleranceZone(String normalized) {
         Pattern pattern = Pattern.compile("-((\\d[defgh])+)");
         Matcher matcher = pattern.matcher(normalized);
         if (matcher.find()) {

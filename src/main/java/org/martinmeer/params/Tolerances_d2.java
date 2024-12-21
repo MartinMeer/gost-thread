@@ -1,4 +1,4 @@
-package org.martinmeer.imdb;
+package org.martinmeer.params;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
