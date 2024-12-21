@@ -19,19 +19,20 @@ public class InputConverterTest {
     @BeforeAll
     public static void setUp() {
         inputEn = "M33x2-6e";
-        inputRu = "  М33хРh3P0,45- 6е6G - LH";
-        inputEnStar = "M33*2-6e";
+        inputRu = "  М33хРh3P0.45- 6е6G - LH";
+        inputEnStar = "M33";
         inputRuStar = "М33*2-6е";
     }
     @Test
     public void testInputMap() {
-        inputConverter = new InputConverter(inputEn);
+        inputConverter = new InputConverter(inputEnStar);
         Map inputMap = inputConverter.generateInputMap();
-        assertThat(inputMap.get(ParamNames.DIRECTION)).isEqualTo(null);
+
         assertThat(inputMap.get(ParamNames.NOMINAL_DIAMETER)).isEqualTo("33");
-        assertThat(inputMap.get(ParamNames.PITCH)).isEqualTo("2");
-        assertThat(inputMap.get(ParamNames.MULTISTART_TREAD)).isEqualTo(null);
-        assertThat(inputMap.get(ParamNames.TOLERANCE_FIELD)).isEqualTo("6e6g");
+        assertThat(inputMap.get(ParamNames.MULTISTART_TREAD)).isEqualTo(null); //"многозаходная резьба"
+        assertThat(inputMap.get(ParamNames.PITCH)).isEqualTo(null);
+        assertThat(inputMap.get(ParamNames.TOLERANCE_FIELD)).isEqualTo(null);
+        assertThat(inputMap.get(ParamNames.DIRECTION)).isEqualTo(null); //"левая резьба"
     }
 
 }

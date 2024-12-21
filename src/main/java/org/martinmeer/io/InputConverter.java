@@ -47,14 +47,12 @@ public class InputConverter {
     private String pitch(String normalized) {
         Pattern pattern = Pattern.compile("-(\\d+)-");
         Matcher matcher = pattern.matcher(normalized);
+        String pitch = null;
         if (matcher.find()) {
-            String rawPitch = matcher.group(1);
-            String pitch = rawPitch.charAt(0)
-                    + "."
-                    + rawPitch.substring(1);
-            return pitch.replaceAll()
+            pitch = matcher.group(1);
+            return pitchNormalize(pitch);
         }
-        return null;
+        return pitch;
     }
 
     private String threadDirection(String normalized) {
@@ -66,14 +64,20 @@ public class InputConverter {
         return null;
     }
     private String toleranceField(String normalized) {
-        Pattern pattern = Pattern.compile("\\d[defgh]\\d[defgh]");
+        Pattern pattern = Pattern.compile("-((\\d[defgh])+)");
         Matcher matcher = pattern.matcher(normalized);
         if (matcher.find()) {
-            return matcher.group();
+            return matcher.group(1);
         }
         return null;
     }
 
+    private String pitchNormalize(String pitch) {
+        return (pitch.length() > 1)
+                ? pitch.replaceAll(String.valueOf(pitch.charAt(0)), pitch.charAt(0) + ".")
+                : pitch;
+    }
+/** This method prepare input for mapping.*/
     private String normalize(String input) {
         String normalized = input
                 .toLowerCase()
