@@ -14,7 +14,7 @@ public class DeviationDAO implements DAO {
     //private Connection conn;
     private final String deviation;
 
-    public DeviationDAO(String deviation) {
+    public DeviationDAO(String deviation, double pitch) {
         //this.conn = conn;
         this.deviation = deviation;
     }
@@ -22,10 +22,12 @@ public class DeviationDAO implements DAO {
     @Override
     public Integer getValue() throws SQLException, IOException {
         int value = 0;
+        int pitchIndex = 7;
         Connection conn = Connector.psqlConnection();
-        String sql = "SELECT dev, dev_array[7] FROM deviations WHERE dev = ?";
+        String sql = "SELECT dev, dev_array[?] FROM deviations WHERE dev = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, deviation);
+            pstmt.setInt(1, pitchIndex);
+            pstmt.setString(2, deviation);
             try (ResultSet rs = pstmt.executeQuery()) {
                 while(rs.next()) {
                     value = rs.getInt("dev_array");

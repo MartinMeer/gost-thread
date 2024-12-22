@@ -8,21 +8,26 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
 
-@Getter
+
 public class Deviation implements ValueGen, LookInDB<Integer> {
 
     private final String toleranceZone;
+    @Getter
     private int pitchDiamDeviance;
+    @Getter
     private int majorDiamDeviance;
+    @Getter
+    private final Pitch pitch;
 
-    public Deviation(String toleranceZone) {
+    public Deviation(String toleranceZone, Pitch pitch) {
         this.toleranceZone = toleranceZone;
+        this.pitch = pitch;
     }
 
 
     @Override
     public Integer sendQuery(String data) throws SQLException, IOException {
-        DeviationDAO deviationDAO = new DeviationDAO(data);
+        DeviationDAO deviationDAO = new DeviationDAO(data, pitch.getPitch());
         return deviationDAO.getValue();
     }
 

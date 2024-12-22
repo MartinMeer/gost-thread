@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.io.InputConverter;
 import org.martinmeer.params.Deviation;
+import org.martinmeer.params.Pitch;
 import org.martinmeer.utils.ParamNames;
 import org.martinmeer.utils.PathMap;
 import org.martinmeer.utils.PropertyManager;
@@ -35,13 +36,15 @@ public class MainTest {
 
     @Test
     public void testDeviation_d2() throws SQLException, IOException {
-        Deviation deviation = new Deviation(inputMap.get(ParamNames.TOLERANCE_ZONE));
+        Pitch pitch = new Pitch(inputMap.get(ParamNames.PITCH));
+        Deviation deviation = new Deviation(inputMap.get(ParamNames.TOLERANCE_ZONE), pitch);
         deviation.generateValue();
         assertThat(deviation.getPitchDiamDeviance()).isEqualTo(50);
     }
     @Test
     public void testDeviation_d() throws SQLException, IOException {
-        Deviation deviation = new Deviation(inputMap.get(ParamNames.TOLERANCE_ZONE));
+        Pitch pitch = new Pitch(inputMap.get(ParamNames.PITCH));
+        Deviation deviation = new Deviation(inputMap.get(ParamNames.TOLERANCE_ZONE), pitch);
         deviation.generateValue();
         assertThat(deviation.getMajorDiamDeviance()).isEqualTo(50);
     }
