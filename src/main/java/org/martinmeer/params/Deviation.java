@@ -1,23 +1,19 @@
 package org.martinmeer.params;
 
+import lombok.Getter;
+import org.martinmeer.jbdc.DeviationDAO;
 import org.martinmeer.utils.ParamNames;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 
-
-public class Deviation implements ValueGen, LookInDB {
+@Getter
+public class Deviation implements ValueGen, LookInDB<Integer> {
 
     private final String toleranceZone;
-    private int d2;
-    private int d;
-
-    public int get_d2() {
-        return d2;
-    }
-
-    public int get_d() {
-        return d;
-    }
+    private int pitchDiamDeviance;
+    private int majorDiamDeviance;
 
     public Deviation(String toleranceZone) {
         this.toleranceZone = toleranceZone;
@@ -25,20 +21,25 @@ public class Deviation implements ValueGen, LookInDB {
 
 
     @Override
-    public void sendQuery(String data) {
-
+    public Integer sendQuery(String data) throws SQLException, IOException {
+        DeviationDAO deviationDAO = new DeviationDAO(data);
+        return deviationDAO.getValue();
     }
 
     @Override
-    public void generateValue(String toleranceZone) {
+    public void generateValue() throws SQLException, IOException {
         Map<ParamNames, String> parsed = parse(toleranceZone);
+        pitchDiamDeviance = sendQuery(parsed.get(ParamNames.PITCH_DIAM_TOLERANCE));
+        majorDiamDeviance = sendQuery(parsed.get(ParamNames.MAJOR_DIAM_TOLERANCE));
     }
 
     private Map<ParamNames, String> parse (String toleranceZone) {
         String d2 = toleranceZone.substring (1, 2);
-        String d = d2;
-        if (toleranceZone.length() == 4) {
-            d = toleranceZone.substring(4);
+        String d;
+        if (toleranceZone.length() > 3) {
+            d = toleranceZone.substring(3);
+        } else {
+            d = toleranceZone.substring (1, 2);
         }
         return Map.of(
                 ParamNames.PITCH_DIAM_TOLERANCE, d2,

@@ -1,17 +1,17 @@
-package org.martinmeer.jbdc;
+package org.martinmeer.utils;
 
-import org.martinmeer.utils.PropertyManager;
-
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Map;
 
 public class Connector {
 
     private static Connection connection;
 
-    public static Connection psqlConnection(PropertyManager propertyManager) throws SQLException {
-        var connSettings = propertyManager.getConnSettings();
+    public static Connection psqlConnection() throws SQLException, IOException {
+        Map<String, String> connSettings = PropertyManager.generateProps();
         if (connection == null || connection.isClosed()) {
             try {
                 Class.forName("org.postgresql.Driver");

@@ -3,3 +3,5 @@ Repair call tests from Make
 
 
 D2 -> d2
+
+ InputConverter.toleranceZone(String normalized) add check for correct user input, e.g "5h6"

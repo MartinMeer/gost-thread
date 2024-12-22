@@ -1,13 +1,12 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.io.InputConverter;
-import org.martinmeer.jbdc.Connector;
 import org.martinmeer.params.Deviation;
 import org.martinmeer.utils.ParamNames;
 import org.martinmeer.utils.PathMap;
 import org.martinmeer.utils.PropertyManager;
 
-import java.sql.Connection;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -24,26 +23,27 @@ public class MainTest {
             "M33-LH"
     );
     private  static Map<ParamNames, String> inputMap;
-    private static Connection connection;
-
-
 
     @BeforeAll
     public static void setUp() throws SQLException {
         PathMap pathMap = new PathMap();
+        PropertyManager.setPathMap(pathMap);
         String input = inputEn.get(0);
         InputConverter inputConverter = new InputConverter(input);
         inputMap = inputConverter.generateInputMap();
-        PropertyManager propertyManager = new PropertyManager(pathMap);
-        connection = Connector.psqlConnection(propertyManager);
-
     }
 
     @Test
-    public void testDeviation() {
+    public void testDeviation_d2() throws SQLException, IOException {
         Deviation deviation = new Deviation(inputMap.get(ParamNames.TOLERANCE_ZONE));
-        assertThat(67).isEqualTo(deviation.get_d());
-        assertThat(67).isEqualTo(deviation.get_d2());
+        deviation.generateValue();
+        assertThat(deviation.getPitchDiamDeviance()).isEqualTo(50);
+    }
+    @Test
+    public void testDeviation_d() throws SQLException, IOException {
+        Deviation deviation = new Deviation(inputMap.get(ParamNames.TOLERANCE_ZONE));
+        deviation.generateValue();
+        assertThat(deviation.getMajorDiamDeviance()).isEqualTo(50);
     }
 
 }

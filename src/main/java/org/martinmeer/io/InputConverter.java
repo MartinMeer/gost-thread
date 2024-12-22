@@ -67,6 +67,7 @@ public class InputConverter {
         }
         return null;
     }
+
     private String toleranceZone(String normalized) {
         Pattern pattern = Pattern.compile("-((\\d[defgh])+)");
         Matcher matcher = pattern.matcher(normalized);
