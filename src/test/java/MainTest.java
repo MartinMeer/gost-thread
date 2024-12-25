@@ -9,6 +9,8 @@ import org.martinmeer.utils.PropertyManager;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +34,8 @@ public class MainTest {
         String input = inputEn.get(0);
         InputConverter inputConverter = new InputConverter(input);
         inputMap = inputConverter.generateInputMap();
+
+
     }
 
     @Test
@@ -47,6 +51,13 @@ public class MainTest {
         Deviation deviation = new Deviation(inputMap.get(ParamNames.TOLERANCE_ZONE), pitch);
         deviation.generateValue();
         assertThat(deviation.getMajorDiamDeviance()).isEqualTo(50);
+    }
+
+    public static String indices(List<Double> pitches, List<Double> givenPitches) {
+        //List<Integer> indices = new ArrayList<>();
+        StringBuilder sb = new StringBuilder("(");
+        givenPitches.forEach(e -> sb.append(pitches.indexOf(e) + 1).append("), ("));
+        return sb.toString();
     }
 
 }
