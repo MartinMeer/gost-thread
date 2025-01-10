@@ -30,10 +30,8 @@ public class InputConverter {
         return inputMap;
     }
 /**
- * Attention!
  * This method returns string representation of nominal thread size.
- * Work correctly only with integer numbers
- * It should be set constraint on user input (e.g "For threads with nominal size from 3 to 600 mm") */
+ */
     private String nominalSize(String normalized) {
         String[] splitInput = normalized.split("-");
         String str = splitInput[0];
@@ -48,13 +46,14 @@ public class InputConverter {
         return null;
     }
 
+    //"  М2.25хРh3P0,45- 6е6G - LH"
     private String pitch(String normalized) {
-        Pattern pattern = Pattern.compile("-(\\d+)-");
+        Pattern pattern = Pattern.compile("-(\\d+(?:\\.\\d+)?)-");
         Matcher matcher = pattern.matcher(normalized);
         String pitch = null;
         if (matcher.find()) {
             pitch = matcher.group(1);
-            return pitchNormalize(pitch);
+            return pitch;
         }
         return pitch;
     }
@@ -77,18 +76,18 @@ public class InputConverter {
         return null;
     }
 
-    private String pitchNormalize(String pitch) {
+    /*private String pitchNormalize(String pitch) {
         return (pitch.length() > 1)
                 ? pitch.replaceAll(String.valueOf(pitch.charAt(0)), pitch.charAt(0) + ".")
                 : pitch;
-    }
+    }*/
 /** This method prepare input for mapping.*/
     private String normalize(String input) {
         String normalized = input
                 .toLowerCase()
                 .replace(" ", "")
-                .replace(".", "")
-                .replace(",", "")
+                //.replace(".", "")
+                .replace(",", ".")
                 .replace("х", "-")
                 .replace("x", "-")
                 .replace("*", "-")
@@ -97,6 +96,9 @@ public class InputConverter {
                 .replaceAll("p(\\d)", "-$1")
                 .replace("н", "h")
                 .replace("е", "e");
+
+
+
         return normalized;
     }
 }

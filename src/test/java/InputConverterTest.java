@@ -18,20 +18,20 @@ public class InputConverterTest {
     @BeforeAll
     public static void setUp() {
         inputEn = "M33x2-6e";
-        inputRu = "  М2.5хРh3P0.45- 6е6G - LH";
+        inputRu = "  М2.25хРh3P0,45- 6е6G - LH";
         inputEnStar = "M33";
         inputRuStar = "М33*2-6е";
     }
     @Test
     public void testInputMap() {
-        inputConverter = new InputConverter(inputEnStar);
+        inputConverter = new InputConverter(inputRu);
         Map inputMap = inputConverter.generateInputMap();
 
-        assertThat(inputMap.get(ParamNames.NOMINAL_SIZE)).isEqualTo("33");
-        assertThat(inputMap.get(ParamNames.MULTISTART_TREAD)).isEqualTo(null); //"многозаходная резьба"
-        assertThat(inputMap.get(ParamNames.PITCH)).isEqualTo(null);
-        assertThat(inputMap.get(ParamNames.TOLERANCE_ZONE)).isEqualTo(null);
-        assertThat(inputMap.get(ParamNames.DIRECTION)).isEqualTo(null); //"левая резьба"
+        assertThat(inputMap.get(ParamNames.NOMINAL_SIZE)).isEqualTo("2.25");
+        assertThat(inputMap.get(ParamNames.MULTISTART_TREAD)).isEqualTo("многозаходная резьба"); //"многозаходная резьба"
+        assertThat(inputMap.get(ParamNames.PITCH)).isEqualTo("0.45");
+        assertThat(inputMap.get(ParamNames.TOLERANCE_ZONE)).isEqualTo("6e6g");
+        assertThat(inputMap.get(ParamNames.DIRECTION)).isEqualTo("левая резьба"); //"левая резьба"
     }
 
 }
