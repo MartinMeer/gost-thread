@@ -15,7 +15,7 @@ repositories {
     mavenCentral()
 }
 application {
-    mainClass.set("hexlet.code.Main")
+    mainClass.set("org.martinmeer.Main")
 }
 
 dependencies {
