@@ -37,6 +37,13 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
+    //Spring
+    implementation("org.springframework:spring-aop:6.2.1")
+    implementation("org.springframework:spring-web:6.2.1")
+    implementation("org.springframework:spring-core:6.2.1")
+    implementation("org.springframework:spring-context:6.2.1")
+    implementation("org.springframework:spring-beans:6.2.1")
+
     //other
     annotationProcessor("info.picocli:picocli-codegen:4.7.6")
 
