@@ -1,6 +1,4 @@
-/*
 package org.martinmeer.jbdc;
-
 
 import org.martinmeer.utils.Connector;
 
@@ -10,23 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DeviationDAO implements GostDAO {
-
-    //private Connection conn;
-    private final String deviation;
-
-    public DeviationDAO(String deviation, double pitch) {
-        //this.conn = conn;
-        this.deviation = deviation;
-    }
-
+public class PitchDAO implements GostDAO<String>{
 
     @Override
-    public Integer getValue() throws SQLException, IOException {
+    public String getValue(String sql) throws SQLException, IOException {
         int value = 0;
         int pitchIndex = 7;
         Connection conn = Connector.psqlConnection();
-        String sql = "SELECT dev, dev_array[?] FROM deviations WHERE dev = ?";
+        sql = "SELECT dev, dev_array[?] FROM deviations WHERE dev = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, pitchIndex);
             pstmt.setString(2, deviation);
@@ -41,4 +30,4 @@ public class DeviationDAO implements GostDAO {
         }
         return value;
     }
-}*/
+}

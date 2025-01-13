@@ -1,3 +1,4 @@
+/*
 package org.martinmeer.params;
 
 import lombok.Getter;
@@ -25,11 +26,13 @@ public class Deviation implements ValueGen, LookInDB<Integer> {
     }
 
 
-    @Override
+    */
+/*@Override
     public Integer sendQuery(String data) throws SQLException, IOException {
-        DeviationDAO deviationDAO = new DeviationDAO(data, pitch.getPitch());
+        DeviationGostDAO deviationDAO = new DeviationGostDAO(data, pitch.getPitch());
         return deviationDAO.getValue();
-    }
+    }*//*
+
 
     @Override
     public void generateValue() throws SQLException, IOException {
@@ -51,4 +54,10 @@ public class Deviation implements ValueGen, LookInDB<Integer> {
                 ParamNames.MAJOR_DIAM_TOLERANCE, d
         );
     }
+
+    @Override
+    public Integer sendQuery(String data) throws SQLException, IOException {
+        return 0;
+    }
 }
+*/

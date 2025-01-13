@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Getter
+
 public class InputConverter {
 
     private final String input;
@@ -21,12 +21,11 @@ public class InputConverter {
 
     public Map<ParamNames, String> generateInputMap() {
         Map<ParamNames, String> inputMap = new HashMap<>();
-
         inputMap.put(ParamNames.DIRECTION, threadDirection(normalized));
         inputMap.put(ParamNames.NOMINAL_SIZE, nominalSize(normalized));
         inputMap.put(ParamNames.MULTISTART_TREAD, multistartThread(normalized));
         inputMap.put(ParamNames.PITCH, pitch(normalized));
-        inputMap.put(ParamNames.TOLERANCE_ZONE, toleranceZone(normalized) );
+        inputMap.put(ParamNames.TOLERANCE_ZONE, toleranceZone(normalized));
         return inputMap;
     }
 /**

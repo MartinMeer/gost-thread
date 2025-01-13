@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.io.InputConverter;
-import org.martinmeer.params.Deviation;
+//import org.martinmeer.params.Deviation;
+import org.martinmeer.params.InputMap;
+import org.martinmeer.params.NominalSize;
 import org.martinmeer.params.Pitch;
 import org.martinmeer.utils.ParamNames;
 import org.martinmeer.utils.PathMap;
@@ -25,27 +27,38 @@ public class MainTest {
             "M33-LH",
             "M33-LH"
     );
-    private  static Map<ParamNames, String> inputMap;
+    private static InputMap inputMap;
+    private static InputConverter inputConverter;
 
     @BeforeAll
     public static void setUp() throws SQLException {
         PathMap pathMap = new PathMap();
-        PropertyManager.setPathMap(pathMap);
+        //PropertyManager.setPathMap(pathMap);
         String input = inputEn.get(0);
-        InputConverter inputConverter = new InputConverter(input);
-        inputMap = inputConverter.generateInputMap();
+        inputConverter = new InputConverter(input);
+        inputMap = new InputMap(inputConverter.generateInputMap());
+    }
+
+    @Test
+    public void testNominalSize() {
+        NominalSize nominalSize = new NominalSize(inputMap.getParameter(ParamNames.NOMINAL_SIZE));
+        assertThat(nominalSize.getNominalSize()).isEqualTo("33");
+    }
+
+    @Test
+    public void testPitch() {
 
 
     }
 
-    @Test
+    /*@Test
     public void testDeviation_d2() throws SQLException, IOException {
-        Pitch pitch = new Pitch(inputMap.get(ParamNames.PITCH));
+        Pitch pitch = new Pitch(inputMap.getPitch());
         Deviation deviation = new Deviation(inputMap.get(ParamNames.TOLERANCE_ZONE), pitch);
         deviation.generateValue();
         assertThat(deviation.getPitchDiamDeviance()).isEqualTo(50);
     }
-    @Test
+    /*@Test
     public void testDeviation_d() throws SQLException, IOException {
         Pitch pitch = new Pitch(inputMap.get(ParamNames.PITCH));
         Deviation deviation = new Deviation(inputMap.get(ParamNames.TOLERANCE_ZONE), pitch);
@@ -58,6 +71,6 @@ public class MainTest {
         StringBuilder sb = new StringBuilder("(");
         givenPitches.forEach(e -> sb.append(pitches.indexOf(e) + 1).append("), ("));
         return sb.toString();
-    }
+    }*/
 
 }

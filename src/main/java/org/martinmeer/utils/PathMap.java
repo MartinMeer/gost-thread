@@ -7,6 +7,27 @@ import java.util.Map;
 
 public class PathMap {
 
+    //private Map<String, Path> pathToProperties;
+
+
+    public Map<String, Path> getPathToProperties() {
+        Map<String, Path> pathToProperties = new HashMap<>();
+        pathToProperties.put("psql_url", pathGen("psql_url.yml"));
+        pathToProperties.put("db_users", pathGen("db_users.yml"));
+        return pathToProperties;
+    }
+
+    private Path pathGen(String fileName) {
+        if (fileName.startsWith("d2")) {
+            return Path.of("src/main/resources/d2-tolerances/" + fileName)
+                    .toAbsolutePath()
+                    .normalize();
+        }
+        return Path.of("src/main/resources/" + fileName)
+                .toAbsolutePath()
+                .normalize();
+    }
+
     public Map<ParamNames, Path> pathMapPitch_Deviance_d() {
         Map<ParamNames, Path> pathMap = new HashMap<>();
         pathMap.put(ParamNames.PITCHES, pathGen("Pitches"));
@@ -25,21 +46,5 @@ public class PathMap {
         pathMap.put(PitchRanges.s45e90, pathGen("d2-tolerance-45-90.yml"));
         return pathMap;
     }
-    public Map<String, Path> pathToProperties() {
-        Map<String, Path> pathToProperties = new HashMap<>();
-        pathToProperties.put("psql_url", pathGen("psql_url.yml"));
-        pathToProperties.put("db_users", pathGen("db_users.yml"));
-        return pathToProperties;
-    }
 
-    private Path pathGen(String fileName) {
-        if (fileName.startsWith("d2")) {
-            return Path.of("src/main/resources/d2-tolerances/" + fileName)
-                    .toAbsolutePath()
-                    .normalize();
-        }
-        return Path.of("src/main/resources/" + fileName)
-                .toAbsolutePath()
-                .normalize();
-    }
 }

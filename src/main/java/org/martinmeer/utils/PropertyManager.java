@@ -19,7 +19,7 @@ public class PropertyManager {
     }*/
 
     public static Map<String, String> generateProps() throws IOException {
-        Map<String,Path> pathToProperties = pathMap.pathToProperties();
+        Map<String,Path> pathToProperties = pathMap.getPathToProperties();
         Map<String, String> connSettings = new HashMap<>(DbParser.parseYaml(pathToProperties.get("db_users")));
         Map<String, String> url = DbParser.parseYaml(pathToProperties.get("psql_url"));
         connSettings.put("url", "jdbc:"
@@ -30,7 +30,7 @@ public class PropertyManager {
         return connSettings;
     }
 
-    public static void setPathMap(PathMap pathMap) {
+    /*public static void setPathMap(PathMap pathMap) {
         PropertyManager.pathMap = pathMap;
-    }
+    }*/
 }
