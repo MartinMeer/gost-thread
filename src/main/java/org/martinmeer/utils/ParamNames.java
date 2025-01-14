@@ -13,6 +13,8 @@ public enum ParamNames {
     DIRECTION,
     NOMINAL_SIZE,
     PITCH_DIAMETER,
+    DB_QUERY,
+    DB_ALIAS,
     MAJOR_DIAMETER;
 
 

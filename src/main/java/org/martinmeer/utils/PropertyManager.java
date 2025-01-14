@@ -12,16 +12,20 @@ import java.util.*;
 @Setter
 public class PropertyManager {
 
-    private static PathMap pathMap;
+    //private static PathMap pathMap;
 
     /*private PropertyManager(PathMap pathMap) {
         this.pathMap = pathMap;
     }*/
 
     public static Map<String, String> generateProps() throws IOException {
-        Map<String,Path> pathToProperties = pathMap.getPathToProperties();
-        Map<String, String> connSettings = new HashMap<>(DbParser.parseYaml(pathToProperties.get("db_users")));
-        Map<String, String> url = DbParser.parseYaml(pathToProperties.get("psql_url"));
+        //Map<String,Path> pathToProperties = pathMap.getPathToProperties();
+        Map<String, String> connSettings = new HashMap<>(DbParser.parseYaml(Path.of("src/main/resources/db_users.yml")
+                .toAbsolutePath()
+                .normalize()));
+        Map<String, String> url = DbParser.parseYaml(Path.of("src/main/resources/psql_url.yml")
+                .toAbsolutePath()
+                .normalize());
         connSettings.put("url", "jdbc:"
                 + url.get("subprotocol")
                 + ":"
@@ -29,8 +33,4 @@ public class PropertyManager {
                 + url.get("subsubname"));
         return connSettings;
     }
-
-    /*public static void setPathMap(PathMap pathMap) {
-        PropertyManager.pathMap = pathMap;
-    }*/
 }

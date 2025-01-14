@@ -5,5 +5,5 @@ import java.sql.SQLException;
 
 public interface ValueGen {
 
-    void generateValue() throws SQLException, IOException;
+    void getValue() throws SQLException, IOException;
 }
