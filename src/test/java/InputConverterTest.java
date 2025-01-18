@@ -1,10 +1,8 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.io.InputConverter;
-import org.martinmeer.params.InputMap;
-import org.martinmeer.utils.ParamNames;
-
-import java.util.Map;
+import org.martinmeer.params.ParamMap;
+import org.martinmeer.utils.Namespace;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,14 +24,14 @@ public class InputConverterTest {
     @Test
     public void testInputMap() {
         inputConverter = new InputConverter(inputRu);
-        InputMap inputMap = new InputMap(inputConverter.generateInputMap());
+        ParamMap paramMap = new ParamMap(inputConverter.generateInputMap());
 
 
-        assertThat(inputMap.getParameter(ParamNames.NOMINAL_SIZE)).isEqualTo("2.25");
-        assertThat(inputMap.getParameter(ParamNames.MULTISTART_TREAD)).isEqualTo("многозаходная резьба"); //"многозаходная резьба"
-        assertThat(inputMap.getParameter(ParamNames.PITCH)).isEqualTo("0.45");
-        assertThat(inputMap.getParameter(ParamNames.TOLERANCE_ZONE)).isEqualTo("6e6g");
-        assertThat(inputMap.getParameter(ParamNames.DIRECTION)).isEqualTo("левая резьба"); //"левая резьба"
+        assertThat(paramMap.getParameter(Namespace.NOMINAL_SIZE)).isEqualTo("2.25");
+        assertThat(paramMap.getParameter(Namespace.MULTISTART_TREAD)).isEqualTo("многозаходная резьба"); //"многозаходная резьба"
+        assertThat(paramMap.getParameter(Namespace.PITCH)).isEqualTo("0.45");
+        assertThat(paramMap.getParameter(Namespace.TOLERANCE_ZONE)).isEqualTo("6e6g");
+        assertThat(paramMap.getParameter(Namespace.DIRECTION)).isEqualTo("левая резьба"); //"левая резьба"
     }
 
 }

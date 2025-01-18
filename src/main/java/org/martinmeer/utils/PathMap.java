@@ -28,11 +28,11 @@ public class PathMap {
                 .normalize();
     }
 
-    public Map<ParamNames, Path> pathMapPitch_Deviance_d() {
-        Map<ParamNames, Path> pathMap = new HashMap<>();
-        pathMap.put(ParamNames.PITCHES, pathGen("Pitches"));
-        pathMap.put(ParamNames.DEVIATIONS, pathGen("Deviations.yml"));
-        pathMap.put(ParamNames.TOLERANCES_d, pathGen("d-tolerances.yml"));
+    public Map<Namespace, Path> pathMapPitch_Deviance_d() {
+        Map<Namespace, Path> pathMap = new HashMap<>();
+        pathMap.put(Namespace.PITCHES, pathGen("fileDB/Pitches"));
+        pathMap.put(Namespace.DEVIATIONS, pathGen("fileDB/Deviations.yml"));
+        pathMap.put(Namespace.TOLERANCES_d, pathGen("fileDB/d-tolerances.yml"));
         return pathMap;
     }
     public Map<PitchRanges, Path> pathMap_d2() {

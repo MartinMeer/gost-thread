@@ -2,20 +2,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.io.InputConverter;
 //import org.martinmeer.params.Deviation;
-import org.martinmeer.params.InputMap;
+import org.martinmeer.params.GostValidator;
+import org.martinmeer.params.ParamMap;
 import org.martinmeer.params.NominalSize;
 import org.martinmeer.params.Pitch;
-import org.martinmeer.utils.Connector;
-import org.martinmeer.utils.ParamNames;
-import org.martinmeer.utils.PathMap;
-import org.martinmeer.utils.PropertyManager;
+import org.martinmeer.utils.Namespace;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,29 +23,41 @@ public class MainTest {
             "M8-LH",
             "M33-LH"
     );
-    private static InputMap inputMap;
+    private static GostValidator gostValidator;
+    private static ParamMap paramMap;
     private static InputConverter inputConverter;
 
     @BeforeAll
     public static void setUp() throws SQLException, IOException {
         //PathMap pathMap = new PathMap();
         //Connector.psqlConnection()
-        String input = inputEn.get(2);
+        String input = inputEn.get(0);
         inputConverter = new InputConverter(input);
-        inputMap = new InputMap(inputConverter.generateInputMap());
+        gostValidator = new GostValidator();
+        paramMap = new ParamMap(inputConverter.generateInputMap());
+
+
+    }
+
+    @Test
+    public void testGostValidator() throws SQLException, IOException {
+        var isNotValid = gostValidator.validate(inputConverter.generateInputMap());
+        assertThat(isNotValid).isEqualTo(false);
+
     }
 
     @Test
     public void testNominalSize() {
-        NominalSize nominalSize = new NominalSize(inputMap.getParameter(ParamNames.NOMINAL_SIZE));
-        assertThat(nominalSize.getNominalSize()).isEqualTo("8");
+
+        NominalSize nominalSize = new NominalSize(paramMap.getParameter(Namespace.NOMINAL_SIZE));
+        assertThat(nominalSize.getNominalSize()).isEqualTo("33");
     }
 
     @Test
     public void testPitch() throws SQLException, IOException {
-        NominalSize nominalSize = new NominalSize(inputMap.getParameter(ParamNames.NOMINAL_SIZE));
-        Pitch pitch = new Pitch(nominalSize, inputMap.getParameter(ParamNames.PITCH));
-        assertThat(pitch.getValue()).isEqualTo("1.25");
+        NominalSize nominalSize = new NominalSize(paramMap.getParameter(Namespace.NOMINAL_SIZE));
+        Pitch pitch = new Pitch(nominalSize, paramMap.getParameter(Namespace.PITCH));
+        assertThat(pitch.getValue()).isEqualTo("1.5");
         //assertThat(pitch.getValue()).isEqualTo("3.5");
     }
 

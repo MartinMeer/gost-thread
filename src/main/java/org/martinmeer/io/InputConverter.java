@@ -1,7 +1,6 @@
 package org.martinmeer.io;
 
-import lombok.Getter;
-import org.martinmeer.utils.ParamNames;
+import org.martinmeer.utils.Namespace;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,22 +10,40 @@ import java.util.regex.Pattern;
 
 public class InputConverter {
 
-    private final String input;
+    //private final String input;
     private final String normalized;
 
     public InputConverter(String input) {
-        this.input = input;
+        //this.input = input;
         normalized = normalize(input);
     }
 
-    public Map<ParamNames, String> generateInputMap() {
-        Map<ParamNames, String> inputMap = new HashMap<>();
-        inputMap.put(ParamNames.DIRECTION, threadDirection(normalized));
-        inputMap.put(ParamNames.NOMINAL_SIZE, nominalSize(normalized));
-        inputMap.put(ParamNames.MULTISTART_TREAD, multistartThread(normalized));
-        inputMap.put(ParamNames.PITCH, pitch(normalized));
-        inputMap.put(ParamNames.TOLERANCE_ZONE, toleranceZone(normalized));
+    public Map<Namespace, String> generateInputMap() {
+        Map<Namespace, String> inputMap = new HashMap<>();
+        inputMap.put(Namespace.DIRECTION, threadDirection(normalized));
+        inputMap.put(Namespace.NOMINAL_SIZE, nominalSize(normalized));
+        inputMap.put(Namespace.MULTISTART_TREAD, multistartThread(normalized));
+        inputMap.put(Namespace.PITCH, pitch(normalized));
+        inputMap.put(Namespace.TOLERANCE_ZONE, toleranceZone(normalized));
         return inputMap;
+    }
+
+    /** This method prepare input for mapping.*/
+    private String normalize(String input) {
+        String normalized = input
+                .toLowerCase()
+                .replace(" ", "")
+                //.replace(".", "")
+                .replace(",", ".")
+                .replace("х", "-")
+                .replace("x", "-")
+                .replace("*", "-")
+                .replace("м", "m")
+                .replace("р", "p")
+                .replaceAll("p(\\d)", "-$1")
+                .replace("н", "h")
+                .replace("е", "e");
+        return normalized;
     }
 /**
  * This method returns string representation of nominal thread size.
@@ -80,24 +97,5 @@ public class InputConverter {
                 ? pitch.replaceAll(String.valueOf(pitch.charAt(0)), pitch.charAt(0) + ".")
                 : pitch;
     }*/
-/** This method prepare input for mapping.*/
-    private String normalize(String input) {
-        String normalized = input
-                .toLowerCase()
-                .replace(" ", "")
-                //.replace(".", "")
-                .replace(",", ".")
-                .replace("х", "-")
-                .replace("x", "-")
-                .replace("*", "-")
-                .replace("м", "m")
-                .replace("р", "p")
-                .replaceAll("p(\\d)", "-$1")
-                .replace("н", "h")
-                .replace("е", "e");
 
-
-
-        return normalized;
-    }
 }
