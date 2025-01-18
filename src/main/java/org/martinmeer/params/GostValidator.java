@@ -43,7 +43,6 @@ public class GostValidator {
 
     }
     private String queryGen(String dbTable, String dbColumn) {
-
         return "SELECT "
                 + dbColumn
                 + " FROM "
@@ -52,7 +51,7 @@ public class GostValidator {
                 + dbColumn
                 + " = ?;";
     }
-/*! add filter!!*/
+
     private Map<Namespace, String> generateActualMap(Map<Namespace, String> inputMap) {
         Map<Namespace, String> actualMap = new HashMap<>();
         inputMap.entrySet().stream()
@@ -64,7 +63,6 @@ public class GostValidator {
                     actualMap.remove(Namespace.DIRECTION);
                     actualMap.remove(Namespace.TOLERANCE_ZONE);
                 });
-
         return actualMap;
     }
 }

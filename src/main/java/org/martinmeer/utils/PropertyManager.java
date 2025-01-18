@@ -20,10 +20,10 @@ public class PropertyManager {
 
     public static Map<String, String> generateProps() throws IOException {
         //Map<String,Path> pathToProperties = pathMap.getPathToProperties();
-        Map<String, String> connSettings = new HashMap<>(DbParser.parseYaml(Path.of("src/main/resources/db_users.yml")
+        Map<String, String> connSettings = new HashMap<>(OtkParser.parseYaml(Path.of("src/main/resources/db_users.yml")
                 .toAbsolutePath()
                 .normalize()));
-        Map<String, String> url = DbParser.parseYaml(Path.of("src/main/resources/psql_url.yml")
+        Map<String, String> url = OtkParser.parseYaml(Path.of("src/main/resources/psql_url.yml")
                 .toAbsolutePath()
                 .normalize());
         connSettings.put("url", "jdbc:"

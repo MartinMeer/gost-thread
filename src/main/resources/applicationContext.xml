@@ -10,8 +10,20 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.baeldung.applicationcontext"/>
 
-    <bean id = "PathMap"
-          class = "org.martinmeer.utils.PathMap">
+    <bean id = "Namespace"
+          class = "org.martinmeer.utils.Namespace">
+    </bean>
+    <bean id="OtkParser"
+          class="org.martinmeer.utils.OtkParser">
+    </bean>
+    <bean id="PropertyManager"
+          class="org.martinmeer.utils.PropertyManager">
+    </bean>
+    <bean id="Connector"
+          class="org.martinmeer.utils.Connector">
+    </bean>
+    <bean id="GostValidator"
+          class="org.martinmeer.params.GostValidator">
     </bean>
 
 

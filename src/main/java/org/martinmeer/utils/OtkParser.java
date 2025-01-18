@@ -6,7 +6,7 @@ import java.io.*;
 import java.nio.file.Path;
 import java.util.*;
 
-public class DbParser {
+public class OtkParser {
 
     public static List<Double> parseTxt(Path path) {
         try {

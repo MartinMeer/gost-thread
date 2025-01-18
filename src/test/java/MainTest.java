@@ -29,26 +29,20 @@ public class MainTest {
 
     @BeforeAll
     public static void setUp() throws SQLException, IOException {
-        //PathMap pathMap = new PathMap();
-        //Connector.psqlConnection()
         String input = inputEn.get(0);
         inputConverter = new InputConverter(input);
         gostValidator = new GostValidator();
         paramMap = new ParamMap(inputConverter.generateInputMap());
-
-
     }
 
     @Test
     public void testGostValidator() throws SQLException, IOException {
         var isNotValid = gostValidator.validate(inputConverter.generateInputMap());
         assertThat(isNotValid).isEqualTo(false);
-
     }
 
     @Test
     public void testNominalSize() {
-
         NominalSize nominalSize = new NominalSize(paramMap.getParameter(Namespace.NOMINAL_SIZE));
         assertThat(nominalSize.getNominalSize()).isEqualTo("33");
     }
@@ -58,7 +52,6 @@ public class MainTest {
         NominalSize nominalSize = new NominalSize(paramMap.getParameter(Namespace.NOMINAL_SIZE));
         Pitch pitch = new Pitch(nominalSize, paramMap.getParameter(Namespace.PITCH));
         assertThat(pitch.getValue()).isEqualTo("1.5");
-        //assertThat(pitch.getValue()).isEqualTo("3.5");
     }
 
     /*@Test
