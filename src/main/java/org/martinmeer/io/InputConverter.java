@@ -10,15 +10,20 @@ import java.util.regex.Pattern;
 
 public class InputConverter {
 
-    //private final String input;
-    private final String normalized;
+    private String input;
+    private String normalized;
 
-    public InputConverter(String input) {
-        //this.input = input;
-        normalized = normalize(input);
+    /*public InputConverter(String input) {
+        this.input = input;
+        //normalized = normalize(input);
+    }*/
+
+    public void setInput(String input) {
+        this.input = input;
     }
 
     public Map<Namespace, String> generateInputMap() {
+        normalize(input);
         Map<Namespace, String> inputMap = new HashMap<>();
         inputMap.put(Namespace.DIRECTION, threadDirection(normalized));
         inputMap.put(Namespace.NOMINAL_SIZE, nominalSize(normalized));
@@ -29,8 +34,8 @@ public class InputConverter {
     }
 
     /** This method prepare input for mapping.*/
-    private String normalize(String input) {
-        String normalized = input
+    private void normalize(String input) {
+        normalized = input
                 .toLowerCase()
                 .replace(" ", "")
                 //.replace(".", "")
@@ -43,7 +48,6 @@ public class InputConverter {
                 .replaceAll("p(\\d)", "-$1")
                 .replace("н", "h")
                 .replace("е", "e");
-        return normalized;
     }
 /**
  * This method returns string representation of nominal thread size.

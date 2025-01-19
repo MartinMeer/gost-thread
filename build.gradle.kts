@@ -6,6 +6,9 @@ plugins {
     id("se.patrikerdes.use-latest-versions") version "0.2.18"
     id("io.freefair.lombok") version "8.6"
     jacoco
+    id("org.springframework.boot") version "3.4.1"
+    id("io.spring.dependency-management") version "1.1.4"
+    //id("io.spring.release") version "0.20.1"
 }
 
 group = "org.martinmeer"
@@ -23,7 +26,6 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.17.2")
     implementation("org.apache.commons:commons-lang3:3.14.0")
     implementation("org.apache.commons:commons-math3:3.6.1")
-    implementation("info.picocli:picocli:4.7.6")
     implementation("org.postgresql:postgresql:42.7.2")
 
     //Lombok
@@ -36,13 +38,23 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.26.0")
     testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
 
-    //Spring
+    //Spring-core
     implementation("org.springframework:spring-aop:6.2.1")
-    implementation("org.springframework:spring-web:6.2.1")
     implementation("org.springframework:spring-core:6.2.1")
     implementation("org.springframework:spring-context:6.2.1")
     implementation("org.springframework:spring-beans:6.2.1")
+
+    //Spring-web
+    implementation("org.springframework:spring-web:6.2.1")
+    implementation("org.springframework:spring-webmvc:6.2.1")
+
+    //Logging
+    testImplementation("ch.qos.logback:logback-classic:1.5.16")
+    implementation("org.slf4j:slf4j-api:2.0.16")
+
+
 
     //other
     annotationProcessor("info.picocli:picocli-codegen:4.7.6")
@@ -50,6 +62,12 @@ dependencies {
 }
 
 //tasks
+
+/*tasks.withType<JavaCompile> {
+    sourceCompatibility = "11"
+    targetCompatibility = "11"
+}*/
+
 tasks.withType<JavaCompile> {
     val compilerArgs = options.compilerArgs
     compilerArgs.add("-Aproject=${project.group}/${project.name}")

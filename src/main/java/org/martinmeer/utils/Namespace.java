@@ -16,7 +16,8 @@ public enum Namespace {
     DB_QUERY(),
     DB_ALIAS(),
     NOM_DIAMETER(),
-    PARAMETER();
+    PARAMETER(),
+    DEFAULT("", "");
 
     Namespace(String dbTable, String dbColumn) {
         this.dbTable = dbTable;
@@ -24,15 +25,18 @@ public enum Namespace {
     }
 
     Namespace() {
+        this.dbTable = "";
+        this.dbColumn = "";
     }
 
-    public String getdbTable() {
+    public String getDbTable() {
         return dbTable;
     }
 
     public String getDbColumn() {
         return dbColumn;
     }
-    public String dbTable;
-    public String dbColumn;
+
+    private final String dbTable;
+    private final String dbColumn;
 }

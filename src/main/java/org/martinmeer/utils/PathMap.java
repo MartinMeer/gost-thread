@@ -1,3 +1,4 @@
+/*
 package org.martinmeer.utils;
 
 import java.nio.file.Path;
@@ -48,3 +49,4 @@ public class PathMap {
     }
 
 }
+*/

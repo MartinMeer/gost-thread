@@ -26,7 +26,7 @@ public class GostValidator {
         String dbTable;
         String dbColumn;
         for (var kv : kvset) {
-            dbTable = kv.getKey().getdbTable();
+            dbTable = kv.getKey().getDbTable();
             dbColumn = kv.getKey().getDbColumn();
             CheckDAO checkDAO = new CheckDAO();
             String query = (queryGen(dbTable, dbColumn));

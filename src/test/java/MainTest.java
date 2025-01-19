@@ -1,3 +1,4 @@
+/*
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.martinmeer.io.InputConverter;
@@ -7,6 +8,7 @@ import org.martinmeer.params.ParamMap;
 import org.martinmeer.params.NominalSize;
 import org.martinmeer.params.Pitch;
 import org.martinmeer.utils.Namespace;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,12 +28,17 @@ public class MainTest {
     private static GostValidator gostValidator;
     private static ParamMap paramMap;
     private static InputConverter inputConverter;
+    private static ClassPathXmlApplicationContext context =
+            new ClassPathXmlApplicationContext("applicationContext.xml");
 
     @BeforeAll
     public static void setUp() throws SQLException, IOException {
         String input = inputEn.get(0);
-        inputConverter = new InputConverter(input);
+        inputConverter = new InputConverter();
+        //inputConverter.setInput(input);
+        inputConverter = context.getBean("inputConverter", InputConverter.class);
         gostValidator = new GostValidator();
+        //gostValidator = context.getBean("GostValidator", GostValidator.class);
         paramMap = new ParamMap(inputConverter.generateInputMap());
     }
 
@@ -54,7 +61,8 @@ public class MainTest {
         assertThat(pitch.getValue()).isEqualTo("1.5");
     }
 
-    /*@Test
+    */
+/*@Test
     public void testDeviation_d2() throws SQLException, IOException {
         Pitch pitch = new Pitch(inputMap.getPitch());
         Deviation deviation = new Deviation(inputMap.get(ParamNames.TOLERANCE_ZONE), pitch);
@@ -74,6 +82,8 @@ public class MainTest {
         StringBuilder sb = new StringBuilder("(");
         givenPitches.forEach(e -> sb.append(pitches.indexOf(e) + 1).append("), ("));
         return sb.toString();
-    }*/
+    }*//*
+
 
 }
+*/

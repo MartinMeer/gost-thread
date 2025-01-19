@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import org.martinmeer.io.InputConverter;
 import org.martinmeer.params.ParamMap;
 import org.martinmeer.utils.Namespace;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,6 +14,8 @@ public class InputConverterTest {
     private static String inputRu;
     private static String inputEnStar;
     private static String inputRuStar;
+    private static ClassPathXmlApplicationContext context;
+
 
     @BeforeAll
     public static void setUp() {
@@ -20,10 +23,12 @@ public class InputConverterTest {
         inputRu = "  М2.25хРh3P0,45- 6е6G - LH";
         inputEnStar = "M33";
         inputRuStar = "М33*2-6е";
+        context = new ClassPathXmlApplicationContext("applicationContext.xml");
     }
     @Test
     public void testInputMap() {
-        inputConverter = new InputConverter(inputRu);
+        context.getBean("InputConverter");
+        inputConverter.setInput(inputRu);
         ParamMap paramMap = new ParamMap(inputConverter.generateInputMap());
 
 

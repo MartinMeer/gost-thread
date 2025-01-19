@@ -23,7 +23,7 @@ public class Pitch {
     public String getValue() throws SQLException, IOException {
         if (input == null) {
             String query = "SELECT pitch_default FROM "
-                    + Namespace.NOMINAL_SIZE.getdbTable()
+                    + Namespace.NOMINAL_SIZE.getDbTable()
                     + " WHERE "
                     + Namespace.NOMINAL_SIZE.getDbColumn()
                     + " = ?;";
