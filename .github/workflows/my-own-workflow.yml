@@ -39,7 +39,7 @@ jobs:
     - run: echo "The current Gradle version was ${{ steps.setup-gradle.outputs.gradle-version }}"
           
     - name: Test with Gradle Wrapper
-      run: make test
+      run: make run-test
     - run: echo "Test was sucsessful!"
         #cache-dependency-path: | # optional
           #sub-project/*.gradle*
